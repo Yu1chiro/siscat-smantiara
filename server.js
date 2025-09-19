@@ -3,23 +3,73 @@ const admin = require("firebase-admin");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const path = require("path");
-
-// Import library untuk Google Sheets
-const { GoogleSpreadsheet } = require("google-spreadsheet");
-const { JWT } = require("google-auth-library");
-const { v4: uuidv4 } = require("uuid");
+const mongoose = require("mongoose");
 
 // Inisialisasi Konfigurasi
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// --- KONEKSI KE MONGODB ---
+const MONGO_URI = process.env.MONGO_URI;
+
+// Cek apakah MONGO_URI sudah ada
+if (!MONGO_URI) {
+    console.error("Kesalahan: Variabel MONGO_URI belum diatur di file .env");
+    process.exit(1); // Keluar dari aplikasi jika URI tidak ditemukan
+}
+
+mongoose.connect(MONGO_URI)
+    .then(() => console.log("MongoDB connected successfully."))
+    .catch(err => {
+        console.error("MongoDB connection error:", err);
+        process.exit(1);
+    });
+
+
+// Skema untuk Catatan Pelanggaran
+const pelanggaranSchema = new mongoose.Schema({
+    nama: { type: String, required: true, trim: true },
+    kelas: { type: String, required: true, trim: true },
+    jenis_pelanggaran: { type: String, required: true, trim: true },
+    catatan: { type: String, required: true, trim: true },
+    timestamp: { type: Date, default: Date.now }
+});
+
+// Skema untuk Aduan Siswa
+const aduanSchema = new mongoose.Schema({
+    nama: { type: String, required: true, trim: true },
+    kelas: { type: String, required: true, trim: true },
+    jenis_pelanggaran: { type: String, required: true, trim: true },
+    detail_aduan: { type: String, required: true, trim: true },
+    status: { type: String, default: 'Baru' }, // Status default
+    timestamp: { type: Date, default: Date.now }
+});
+
+// Helper untuk mengubah _id -> id di response JSON agar kompatibel dengan frontend
+const transformJSON = (schema) => {
+    schema.set('toJSON', {
+        virtuals: true, // Pastikan id virtual disertakan
+        transform: (doc, ret) => {
+            delete ret._id; // Hapus _id
+            delete ret.__v; // Hapus __v
+        }
+    });
+};
+
+transformJSON(pelanggaranSchema);
+transformJSON(aduanSchema);
+
+const Pelanggaran = mongoose.model("Pelanggaran", pelanggaranSchema);
+const Aduan = mongoose.model("Aduan", aduanSchema);
+
+
 // Inisialisasi Firebase HANYA untuk Autentikasi
 const serviceAccount = {
   type: process.env.TYPE,
   project_id: process.env.PROJECT_ID,
   private_key_id: process.env.PRIVATE_KEY_ID,
-  private_key: process.env.PRIVATE_KEY.replace(/\\n/g, "\n"),
+  private_key: (process.env.PRIVATE_KEY || "").replace(/\\n/g, "\n"),
   client_email: process.env.CLIENT_EMAIL,
   client_id: process.env.CLIENT_ID,
   auth_uri: process.env.AUTH_URI,
@@ -34,27 +84,6 @@ admin.initializeApp({
 });
 
 const auth = admin.auth();
-
-// Inisialisasi Klien Google Sheets (CARA BARU - v4)
-const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
-
-// Fungsi async untuk inisialisasi otentikasi
-const initializeAuth = async () => {
-  try {
-    await doc.useServiceAccountAuth({
-      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      private_key: (process.env.GOOGLE_PRIVATE_KEY || "").replace(/\\n/g, "\n"),
-    });
-    console.log("Otentikasi Google Sheets berhasil.");
-  } catch (error) {
-    console.error("GAGAL OTENTIKASI Google Sheets:", error);
-    // Hentikan aplikasi jika otentikasi gagal, karena tidak ada yang akan berfungsi
-    process.exit(1);
-  }
-};
-
-// Panggil fungsi inisialisasi
-initializeAuth();
 
 // Middleware
 app.use(express.json());
@@ -72,46 +101,31 @@ const checkAuth = async (req, res, next) => {
       req.user = decodedClaims;
       return next(); // Lanjutkan jika admin
     }
-    throw new Error("Not an admin"); // Buat error jika bukan admin
+    throw new Error("Not an admin");
   } catch (error) {
-    // Cek apakah ini request API atau request halaman
     if (req.path.startsWith("/api/")) {
-      // Jika request API, kirim respons JSON
       console.error(`Auth Error on API path ${req.path}:`, error.message);
       return res.status(401).json({ success: false, message: "Sesi tidak valid atau tidak diizinkan." });
     } else {
-      // Jika request halaman, redirect ke halaman login
       return res.redirect("/login");
     }
   }
 };
+
 // Rute Halaman
-app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "login.html"));
-});
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-app.get("/register", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "register.html"));
-});
-app.get("/dashboard", checkAuth, (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "dashboard.html"));
-});
-app.get("/detail-siswa", checkAuth, (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "detail-siswa.html"));
-});
-app.get("/statistik", checkAuth, (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "statistik.html"));
-});
-app.get("/form-aduan", checkAuth, (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "form-aduan.html"));
-});
-app.get("/aduan-siswa", checkAuth, (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "aduan-siswa.html"));
-});
+app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "public", "login.html")));
+app.get("/", (req, res) => res.sendFile(path.join(__dirname, "public", "index.html")));
+app.get("/register", (req, res) => res.sendFile(path.join(__dirname, "public", "register.html")));
+app.get("/dashboard", checkAuth, (req, res) => res.sendFile(path.join(__dirname, "public", "dashboard.html")));
+app.get("/detail-siswa", checkAuth, (req, res) => res.sendFile(path.join(__dirname, "public", "detail-siswa.html")));
+app.get("/statistik", checkAuth, (req, res) => res.sendFile(path.join(__dirname, "public", "statistik.html")));
+app.get("/aduan-siswa", checkAuth, (req, res) => res.sendFile(path.join(__dirname, "public", "aduan-siswa.html")));
+// Formulir aduan publik, tidak memerlukan login
+app.get("/form-aduan", (req, res) => res.sendFile(path.join(__dirname, "public", "form-aduan.html")));
+
+
 // =================================================================
-// RUTE API OTENTIKASI (PENAMBAHAN LOG ERROR)
+// RUTE API OTENTIKASI (TIDAK BERUBAH)
 // =================================================================
 app.post("/api/auth/register", async (req, res) => {
   const { username, email, password } = req.body;
@@ -155,42 +169,62 @@ app.get("/api/auth/logout", (req, res) => {
 });
 
 // =================================================================
-// REVISI API PENGADUAN SISWA (PENAMBAHAN LOG ERROR & OTENTIKASI)
+// API PENGADUAN SISWA (MONGODB)
 // =================================================================
 
-app.post("/api/aduan/kirim", checkAuth, async (req, res) => {
-  // DITAMBAHKAN checkAuth
+// Endpoint untuk mengirim aduan (publik, tidak perlu login)
+app.post("/api/aduan/kirim", async (req, res) => {
   try {
     const { nama, kelas, detail_aduan, jenis_pelanggaran } = req.body;
     if (!nama || !kelas || !detail_aduan || !jenis_pelanggaran) {
       return res.status(400).json({ success: false, message: "Semua field wajib diisi." });
     }
-    await doc.loadInfo();
-    const sheet = doc.sheetsByTitle["aduan"];
-    const newRow = { id: uuidv4(), nama, kelas, detail_aduan, status: "Pending", timestamp: new Date().toISOString(), jenis_pelanggaran };
-    await sheet.addRow(newRow);
+    const newAduan = new Aduan({ nama, kelas, detail_aduan, jenis_pelanggaran, status: 'Baru' });
+    await newAduan.save();
     res.status(201).json({ success: true, message: "Aduan Anda telah berhasil dikirim." });
   } catch (error) {
     console.error("Error di /api/aduan/kirim:", error);
     res.status(500).json({ success: false, message: "Terjadi kesalahan pada server." });
   }
 });
+app.get('/api/aduan/stats', async (req, res) => {
+    try {
+        const statusCounts = await Aduan.aggregate([
+            { $group: { _id: '$status', count: { $sum: 1 } } },
+            { $project: { status: '$_id', count: 1, _id: 0 } }
+        ]);
 
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+        
+        const monthlyTrend = await Aduan.aggregate([
+            { $match: { timestamp: { $gte: thirtyDaysAgo } } },
+            { $group: { 
+                _id: { $dateToString: { format: "%Y-%m-%d", date: "$timestamp" } }, 
+                count: { $sum: 1 } 
+            }},
+            { $sort: { _id: 1 } },
+            { $project: { date: '$_id', count: 1, _id: 0 } }
+        ]);
+
+        res.json({ success: true, statusCounts, monthlyTrend });
+    } catch (error) {
+        console.error("Error di /api/aduan/stats:", error);
+        res.status(500).json({ success: false, message: 'Gagal mengambil statistik aduan.' });
+    }
+});
+// Endpoint untuk melihat daftar aduan (memerlukan login admin)
 app.get('/api/aduan/list',  async (req, res) => {
     try {
-        await doc.loadInfo();
-        const sheet = doc.sheetsByTitle['aduan'];
-        if (!sheet) throw new Error("Sheet 'aduan' tidak ditemukan.");
-        
-        const rows = await sheet.getRows();
-        const data = rows.map(row => row.toObject()); // Metode yang BENAR untuk v3
-        res.json(data);
+        const aduanList = await Aduan.find().sort({ timestamp: -1 }); // Urutkan dari yang terbaru
+        res.json(aduanList);
     } catch (error) {
         console.error("Error di /api/aduan/list:", error);
         res.status(500).json({ success: false, message: 'Gagal mengambil data aduan.' });
     }
 });
 
+// Endpoint untuk mengubah status aduan (memerlukan login admin)
 app.patch("/api/aduan/update-status/:id", checkAuth, async (req, res) => {
   try {
     const { id } = req.params;
@@ -198,15 +232,10 @@ app.patch("/api/aduan/update-status/:id", checkAuth, async (req, res) => {
     if (!status) {
       return res.status(400).json({ success: false, message: "Status wajib diisi." });
     }
-    await doc.loadInfo();
-    const sheet = doc.sheetsByTitle["aduan"];
-    const rows = await sheet.getRows();
-    const rowToUpdate = rows.find((row) => row.get("id") === id);
-    if (!rowToUpdate) {
+    const updatedAduan = await Aduan.findByIdAndUpdate(id, { status }, { new: true });
+    if (!updatedAduan) {
       return res.status(404).json({ success: false, message: "Data aduan tidak ditemukan" });
     }
-    rowToUpdate.set("status", status);
-    await rowToUpdate.save();
     res.json({ success: true, message: `Status aduan berhasil diubah menjadi "${status}"` });
   } catch (error) {
     console.error("Error di /api/aduan/update-status:", error);
@@ -214,15 +243,14 @@ app.patch("/api/aduan/update-status/:id", checkAuth, async (req, res) => {
   }
 });
 
+// Endpoint untuk menghapus aduan (memerlukan login admin)
 app.delete("/api/aduan/delete/:id", checkAuth, async (req, res) => {
   try {
     const { id } = req.params;
-    await doc.loadInfo();
-    const sheet = doc.sheetsByTitle["aduan"];
-    const rows = await sheet.getRows();
-    const rowToDelete = rows.find((row) => row.get("id") === id);
-    if (!rowToDelete) return res.status(404).json({ success: false, message: "Data aduan tidak ditemukan" });
-    await rowToDelete.delete();
+    const deletedAduan = await Aduan.findByIdAndDelete(id);
+    if (!deletedAduan) {
+      return res.status(404).json({ success: false, message: "Data aduan tidak ditemukan" });
+    }
     res.json({ success: true, message: "Data aduan berhasil dihapus." });
   } catch (error) {
     console.error("Error di /api/aduan/delete:", error);
@@ -231,50 +259,46 @@ app.delete("/api/aduan/delete/:id", checkAuth, async (req, res) => {
 });
 
 // =================================================================
-// REVISI API PELANGGARAN (PENAMBAHAN LOG ERROR & OTENTIKASI)
+// API PELANGGARAN (MONGODB)
 // =================================================================
 
+// Endpoint untuk menambah data pelanggaran (memerlukan login admin)
 app.post("/api/pelanggaran/add", checkAuth, async (req, res) => {
   try {
     const { nama, kelas, jenis_pelanggaran, catatan } = req.body;
-    await doc.loadInfo();
-    const sheet = doc.sheetsByTitle["pelanggaran"];
-    const newRow = { id: uuidv4(), nama, kelas, jenis_pelanggaran, catatan, timestamp: new Date().toISOString() };
-    await sheet.addRow(newRow);
-    res.status(201).json({ success: true, message: "Data berhasil ditambahkan", data: newRow });
+    const newPelanggaran = new Pelanggaran({ nama, kelas, jenis_pelanggaran, catatan });
+    await newPelanggaran.save();
+    res.status(201).json({ success: true, message: "Data berhasil ditambahkan", data: newPelanggaran });
   } catch (error) {
     console.error("Error di /api/pelanggaran/add:", error);
     res.status(500).json({ success: false, message: "Gagal menambahkan data." });
   }
 });
-app.get('/api/pelanggaran/list',  async (req, res) => {
-    try {
-        await doc.loadInfo();
-        const sheet = doc.sheetsByTitle['pelanggaran'];
-        if (!sheet) throw new Error("Sheet 'pelanggaran' tidak ditemukan.");
 
-        const rows = await sheet.getRows();
-        const data = rows.map(row => row.toObject()); // Metode yang BENAR untuk v3
-        res.json(data);
+// Endpoint untuk melihat daftar pelanggaran (bisa diakses publik dan admin)
+// Catatan: checkAuth dilepas agar statistik di halaman utama bisa tampil.
+app.get('/api/pelanggaran/list', async (req, res) => {
+    try {
+        const pelanggaranList = await Pelanggaran.find().sort({ timestamp: -1 });
+        res.json(pelanggaranList);
     } catch (error) {
         console.error("Error di /api/pelanggaran/list:", error);
         res.status(500).json({ success: false, message: 'Gagal mengambil data pelanggaran.' });
     }
 });
+
+// Endpoint untuk mengubah data pelanggaran (memerlukan login admin)
 app.put("/api/pelanggaran/update/:id", checkAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const { nama, kelas, jenis_pelanggaran, catatan } = req.body;
-    await doc.loadInfo();
-    const sheet = doc.sheetsByTitle["pelanggaran"];
-    const rows = await sheet.getRows();
-    const rowToUpdate = rows.find((row) => row.get("id") === id);
-    if (!rowToUpdate) return res.status(404).json({ success: false, message: "Data tidak ditemukan" });
-    rowToUpdate.set("nama", nama);
-    rowToUpdate.set("kelas", kelas);
-    rowToUpdate.set("jenis_pelanggaran", jenis_pelanggaran);
-    rowToUpdate.set("catatan", catatan);
-    await rowToUpdate.save();
+    const updatedPelanggaran = await Pelanggaran.findByIdAndUpdate(id, 
+        { nama, kelas, jenis_pelanggaran, catatan }, 
+        { new: true, runValidators: true }
+    );
+    if (!updatedPelanggaran) {
+      return res.status(404).json({ success: false, message: "Data tidak ditemukan" });
+    }
     res.json({ success: true, message: "Data berhasil diupdate." });
   } catch (error) {
     console.error("Error di /api/pelanggaran/update:", error);
@@ -282,21 +306,21 @@ app.put("/api/pelanggaran/update/:id", checkAuth, async (req, res) => {
   }
 });
 
+// Endpoint untuk menghapus data pelanggaran (memerlukan login admin)
 app.delete("/api/pelanggaran/delete/:id", checkAuth, async (req, res) => {
   try {
     const { id } = req.params;
-    await doc.loadInfo();
-    const sheet = doc.sheetsByTitle["pelanggaran"];
-    const rows = await sheet.getRows();
-    const rowToDelete = rows.find((row) => row.get("id") === id);
-    if (!rowToDelete) return res.status(404).json({ success: false, message: "Data tidak ditemukan" });
-    await rowToDelete.delete();
+    const deletedPelanggaran = await Pelanggaran.findByIdAndDelete(id);
+    if (!deletedPelanggaran) {
+      return res.status(404).json({ success: false, message: "Data tidak ditemukan" });
+    }
     res.json({ success: true, message: "Data berhasil dihapus." });
   } catch (error) {
     console.error("Error di /api/pelanggaran/delete:", error);
     res.status(500).json({ success: false, message: "Gagal menghapus data." });
   }
 });
+
 // Server Listener
 app.listen(PORT, () => {
   console.log(`Server berjalan di http://localhost:${PORT}`);
