@@ -57,15 +57,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 // AUTHENTICATION LOGIC (TIDAK BERUBAH)
 const checkAuth = async (req, res, next) => {
   const sessionCookie = req.cookies.session || '';
+  
   try {
     const decodedClaims = await auth.verifySessionCookie(sessionCookie, true);
     if (decodedClaims.admin) {
       req.user = decodedClaims;
-      return next();
+      return next(); // Lanjutkan jika admin
     }
-    return res.status(401).redirect('/login');
+    throw new Error('Not an admin'); // Buat error jika bukan admin
   } catch (error) {
-    return res.status(401).redirect('/login');
+    // Cek apakah ini request API atau request halaman
+    if (req.path.startsWith('/api/')) {
+      // Jika request API, kirim respons JSON
+      console.error(`Auth Error on API path ${req.path}:`, error.message);
+      return res.status(401).json({ success: false, message: 'Sesi tidak valid atau tidak diizinkan.' });
+    } else {
+      // Jika request halaman, redirect ke halaman login
+      return res.redirect('/login');
+    }
   }
 };
 // Rute Halaman
@@ -77,118 +86,73 @@ app.get('/detail-siswa', checkAuth, (req, res) => { res.sendFile(path.join(__dir
 app.get('/statistik', checkAuth, (req, res) => { res.sendFile(path.join(__dirname, 'public', 'statistik.html')); });
 app.get('/form-aduan', checkAuth, (req, res) => { res.sendFile(path.join(__dirname, 'public', 'form-aduan.html')); });
 app.get('/aduan-siswa', checkAuth, (req, res) => { res.sendFile(path.join(__dirname, 'public', 'aduan-siswa.html')); });
-// Rute API Auth
+// =================================================================
+// RUTE API OTENTIKASI (PENAMBAHAN LOG ERROR)
+// =================================================================
 app.post('/api/auth/register', async (req, res) => {
   const { username, email, password } = req.body;
-  
   if (!username || !email || !password) {
     return res.status(400).json({ success: false, message: 'Semua field wajib diisi.' });
   }
-
   try {
-    const userRecord = await auth.createUser({
-      email,
-      password,
-      displayName: username,
-      emailVerified: false, // Wajib false dulu
-    });
-
-    // PENTING: Set Custom Claim sebagai admin di sisi server
+    const userRecord = await auth.createUser({ email, password, displayName: username, emailVerified: false });
     await auth.setCustomUserClaims(userRecord.uid, { admin: true });
-
-    // Kirim email verifikasi
-    const verificationLink = await auth.generateEmailVerificationLink(email);
-    // Di aplikasi production, Anda akan mengirim link ini via email. 
-    // Untuk publicelopment, kita kirimkan sebagai response agar mudah dites.
-    console.log(`Link Verifikasi untuk ${email}: ${verificationLink}`);
-    
-    res.status(201).json({ 
-      success: true, 
-      message: 'Registrasi berhasil. Silakan cek email Anda untuk verifikasi.',
-      // Hapus verificationLink di production, ini hanya untuk testing
-      verificationLink: verificationLink 
-    });
-
+    res.status(201).json({ success: true, message: 'Registrasi berhasil. Silakan verifikasi email Anda.' });
   } catch (error) {
-    console.error('Error saat registrasi:', error);
+    console.error("Error saat registrasi:", error);
     res.status(500).json({ success: false, message: error.message });
   }
 });
 
-// Rute untuk Login
 app.post('/api/auth/login', async (req, res) => {
     const idToken = req.body.idToken.toString();
     const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 hari
-
     try {
         const decodedToken = await auth.verifyIdToken(idToken, true);
-
-        // Cek apakah email sudah diverifikasi
         if (!decodedToken.email_verified) {
-            return res.status(401).json({ success: false, message: 'Email belum diverifikasi. Silakan cek email Anda.' });
+            return res.status(401).json({ success: false, message: 'Email belum diverifikasi.' });
         }
-        
-        // Cek apakah user punya role admin
         if (!decodedToken.admin) {
             return res.status(403).json({ success: false, message: 'Anda tidak memiliki hak akses admin.' });
         }
-        
-        // Buat session cookie
         const sessionCookie = await auth.createSessionCookie(idToken, { expiresIn });
         const options = { maxAge: expiresIn, httpOnly: true, secure: process.env.NODE_ENV === 'production' };
-        
         res.cookie('session', sessionCookie, options);
         res.json({ success: true, message: 'Login berhasil.' });
-
     } catch (error) {
         console.error('Error saat login:', error);
         res.status(401).json({ success: false, message: 'Login gagal, token tidak valid.' });
     }
 });
 
-
-// Rute untuk Logout
 app.get('/api/auth/logout', (req, res) => {
   res.clearCookie('session');
   res.redirect('/login');
 });
 
+
 // =================================================================
-// API PENGADUAN SISWA
+// REVISI API PENGADUAN SISWA (PENAMBAHAN LOG ERROR & OTENTIKASI)
 // =================================================================
 
-app.post('/api/aduan/kirim', async (req, res) => {
+app.post('/api/aduan/kirim', checkAuth, async (req, res) => { // DITAMBAHKAN checkAuth
   try {
-    // BARU: Tambahkan 'jenis_pelanggaran'
     const { nama, kelas, detail_aduan, jenis_pelanggaran } = req.body;
-    
-    // BARU: Tambahkan validasi untuk field baru
     if (!nama || !kelas || !detail_aduan || !jenis_pelanggaran) {
       return res.status(400).json({ success: false, message: 'Semua field wajib diisi.' });
     }
-    
     await doc.loadInfo();
     const sheet = doc.sheetsByTitle['aduan'];
-    
-    const newRow = {
-      id: uuidv4(),
-      nama,
-      kelas,
-      detail_aduan,
-      status: 'Pending',
-      timestamp: new Date().toISOString(),
-      jenis_pelanggaran: jenis_pelanggaran // BARU: Simpan data jenis pelanggaran
-    };
-    
+    const newRow = { id: uuidv4(), nama, kelas, detail_aduan, status: 'Pending', timestamp: new Date().toISOString(), jenis_pelanggaran };
     await sheet.addRow(newRow);
     res.status(201).json({ success: true, message: 'Aduan Anda telah berhasil dikirim.' });
   } catch (error) {
-    console.error("Error saat menyimpan aduan:", error); // Tambahkan log error untuk debugging
+    console.error("Error di /api/aduan/kirim:", error);
     res.status(500).json({ success: false, message: 'Terjadi kesalahan pada server.' });
   }
 });
 
-app.get('/api/aduan/list', async (req, res) => {
+app.get('/api/aduan/list',  async (req, res) => { // DITAMBAHKAN checkAuth
     try {
         await doc.loadInfo();
         const sheet = doc.sheetsByTitle['aduan'];
@@ -196,6 +160,7 @@ app.get('/api/aduan/list', async (req, res) => {
         const data = rows.map(row => row.toObject());
         res.json(data);
     } catch (error) {
+        console.error("Error di /api/aduan/list:", error);
         res.status(500).json({ success: false, message: 'Gagal mengambil data aduan.' });
     }
 });
@@ -203,31 +168,26 @@ app.get('/api/aduan/list', async (req, res) => {
 app.patch('/api/aduan/update-status/:id', checkAuth, async (req, res) => {
     try {
         const { id } = req.params;
-        const { status } = req.body; // Kita akan mengirim status baru dari client
-
+        const { status } = req.body;
         if (!status) {
             return res.status(400).json({ success: false, message: 'Status wajib diisi.' });
         }
-
         await doc.loadInfo();
         const sheet = doc.sheetsByTitle['aduan'];
         const rows = await sheet.getRows();
         const rowToUpdate = rows.find(row => row.get('id') === id);
-
         if (!rowToUpdate) {
             return res.status(404).json({ success: false, message: 'Data aduan tidak ditemukan' });
         }
-
-        // Update kolom status dan simpan
         rowToUpdate.set('status', status);
         await rowToUpdate.save();
-
         res.json({ success: true, message: `Status aduan berhasil diubah menjadi "${status}"` });
     } catch (error) {
-        console.error("Error updating status:", error);
+        console.error("Error di /api/aduan/update-status:", error);
         res.status(500).json({ success: false, message: 'Gagal mengubah status aduan.' });
     }
 });
+
 app.delete('/api/aduan/delete/:id', checkAuth, async (req, res) => {
     try {
         const { id } = req.params;
@@ -239,12 +199,13 @@ app.delete('/api/aduan/delete/:id', checkAuth, async (req, res) => {
         await rowToDelete.delete();
         res.json({ success: true, message: 'Data aduan berhasil dihapus.' });
     } catch (error) {
+        console.error("Error di /api/aduan/delete:", error);
         res.status(500).json({ success: false, message: 'Gagal menghapus data aduan.' });
     }
 });
 
 // =================================================================
-// API PELANGGARAN
+// REVISI API PELANGGARAN (PENAMBAHAN LOG ERROR & OTENTIKASI)
 // =================================================================
 
 app.post('/api/pelanggaran/add', checkAuth, async (req, res) => {
@@ -252,22 +213,16 @@ app.post('/api/pelanggaran/add', checkAuth, async (req, res) => {
         const { nama, kelas, jenis_pelanggaran, catatan } = req.body;
         await doc.loadInfo();
         const sheet = doc.sheetsByTitle['pelanggaran'];
-        const newRow = {
-            id: uuidv4(),
-            nama,
-            kelas,
-            jenis_pelanggaran,
-            catatan,
-            timestamp: new Date().toISOString() // FIX: Menambahkan timestamp
-        };
+        const newRow = { id: uuidv4(), nama, kelas, jenis_pelanggaran, catatan, timestamp: new Date().toISOString() };
         await sheet.addRow(newRow);
         res.status(201).json({ success: true, message: 'Data berhasil ditambahkan', data: newRow });
     } catch (error) {
+        console.error("Error di /api/pelanggaran/add:", error);
         res.status(500).json({ success: false, message: 'Gagal menambahkan data.' });
     }
 });
 
-app.get('/api/pelanggaran/list', async (req, res) => {
+app.get('/api/pelanggaran/list',  async (req, res) => { // DITAMBAHKAN checkAuth
     try {
         await doc.loadInfo();
         const sheet = doc.sheetsByTitle['pelanggaran'];
@@ -275,6 +230,7 @@ app.get('/api/pelanggaran/list', async (req, res) => {
         const data = rows.map(row => row.toObject());
         res.json(data);
     } catch (error) {
+        console.error("Error di /api/pelanggaran/list:", error);
         res.status(500).json({ success: false, message: 'Gagal mengambil data.' });
     }
 });
@@ -295,6 +251,7 @@ app.put('/api/pelanggaran/update/:id', checkAuth, async (req, res) => {
         await rowToUpdate.save();
         res.json({ success: true, message: 'Data berhasil diupdate.' });
     } catch (error) {
+        console.error("Error di /api/pelanggaran/update:", error);
         res.status(500).json({ success: false, message: 'Gagal mengupdate data.' });
     }
 });
@@ -310,10 +267,10 @@ app.delete('/api/pelanggaran/delete/:id', checkAuth, async (req, res) => {
         await rowToDelete.delete();
         res.json({ success: true, message: 'Data berhasil dihapus.' });
     } catch (error) {
+        console.error("Error di /api/pelanggaran/delete:", error);
         res.status(500).json({ success: false, message: 'Gagal menghapus data.' });
     }
 });
-
 // Server Listener
 app.listen(PORT, () => {
   console.log(`Server berjalan di http://localhost:${PORT}`);
