@@ -37,15 +37,26 @@ admin.initializeApp({
 
 const auth = admin.auth();
 
+// Inisialisasi Klien Google Sheets (CARA BARU - v4)
+const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
 
-// Inisialisasi Klien Google Sheets
-const serviceAccountAuth = new JWT({
-    email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-});
+// Fungsi async untuk inisialisasi otentikasi
+const initializeAuth = async () => {
+  try {
+    await doc.useServiceAccountAuth({
+      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      private_key: (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
+    });
+    console.log("Otentikasi Google Sheets berhasil.");
+  } catch (error) {
+    console.error("GAGAL OTENTIKASI Google Sheets:", error);
+    // Hentikan aplikasi jika otentikasi gagal, karena tidak ada yang akan berfungsi
+    process.exit(1); 
+  }
+};
 
-const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
+// Panggil fungsi inisialisasi
+initializeAuth();
 
 // Middleware
 app.use(express.json());
