@@ -176,27 +176,19 @@ app.post("/api/aduan/kirim", checkAuth, async (req, res) => {
   }
 });
 
-app.get("/api/aduan/list", async (req, res) => {
-  // DITAMBAHKAN checkAuth
-  try {
-    await doc.loadInfo();
-    const sheet = doc.sheetsByTitle["aduan"];
-    // CARA BARU (v4)
-    const rows = await sheet.getRows(); // Mendapatkan semua baris
-    // REVISI DI SINI
-    const data = rows.map((row) => {
-      const rowData = {};
-      sheet.headerValues.forEach((header) => {
-        rowData[header] = row.get(header);
-      });
-      return rowData;
-    });
-
-    res.json(data);
-  } catch (error) {
-    console.error("Error di /api/aduan/list:", error);
-    res.status(500).json({ success: false, message: "Gagal mengambil data aduan." });
-  }
+app.get('/api/aduan/list',  async (req, res) => {
+    try {
+        await doc.loadInfo();
+        const sheet = doc.sheetsByTitle['aduan'];
+        if (!sheet) throw new Error("Sheet 'aduan' tidak ditemukan.");
+        
+        const rows = await sheet.getRows();
+        const data = rows.map(row => row.toObject()); // Metode yang BENAR untuk v3
+        res.json(data);
+    } catch (error) {
+        console.error("Error di /api/aduan/list:", error);
+        res.status(500).json({ success: false, message: 'Gagal mengambil data aduan.' });
+    }
 });
 
 app.patch("/api/aduan/update-status/:id", checkAuth, async (req, res) => {
@@ -255,29 +247,20 @@ app.post("/api/pelanggaran/add", checkAuth, async (req, res) => {
     res.status(500).json({ success: false, message: "Gagal menambahkan data." });
   }
 });
+app.get('/api/pelanggaran/list',  async (req, res) => {
+    try {
+        await doc.loadInfo();
+        const sheet = doc.sheetsByTitle['pelanggaran'];
+        if (!sheet) throw new Error("Sheet 'pelanggaran' tidak ditemukan.");
 
-app.get("/api/pelanggaran/list", async (req, res) => {
-  // DITAMBAHKAN checkAuth
-  try {
-    await doc.loadInfo();
-    const sheet = doc.sheetsByTitle["pelanggaran"];
-    const rows = await sheet.getRows();
-    // REVISI DI SINI
-    const data = rows.map((row) => {
-      const rowData = {};
-      sheet.headerValues.forEach((header) => {
-        rowData[header] = row.get(header);
-      });
-      return rowData;
-    });
-
-    res.json(data);
-  } catch (error) {
-    console.error("Error di /api/pelanggaran/list:", error);
-    res.status(500).json({ success: false, message: "Gagal mengambil data." });
-  }
+        const rows = await sheet.getRows();
+        const data = rows.map(row => row.toObject()); // Metode yang BENAR untuk v3
+        res.json(data);
+    } catch (error) {
+        console.error("Error di /api/pelanggaran/list:", error);
+        res.status(500).json({ success: false, message: 'Gagal mengambil data pelanggaran.' });
+    }
 });
-
 app.put("/api/pelanggaran/update/:id", checkAuth, async (req, res) => {
   try {
     const { id } = req.params;
