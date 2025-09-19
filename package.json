@@ -5,7 +5,7 @@
     "express": "^5.1.0",
     "firebase-admin": "^13.5.0",
     "google-spreadsheet": "^3.3.0",
-    "uuid": "^13.0.0"
+    "uuid": "^8.3.2"
   },
   "name": "web-catatanpelanggaran",
   "version": "1.0.0",
