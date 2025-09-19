@@ -188,7 +188,7 @@ app.post('/api/aduan/kirim', async (req, res) => {
   }
 });
 
-app.get('/api/aduan/list', checkAuth, async (req, res) => {
+app.get('/api/aduan/list', async (req, res) => {
     try {
         await doc.loadInfo();
         const sheet = doc.sheetsByTitle['aduan'];
@@ -267,7 +267,7 @@ app.post('/api/pelanggaran/add', checkAuth, async (req, res) => {
     }
 });
 
-app.get('/api/pelanggaran/list', checkAuth, async (req, res) => {
+app.get('/api/pelanggaran/list', async (req, res) => {
     try {
         await doc.loadInfo();
         const sheet = doc.sheetsByTitle['pelanggaran'];
