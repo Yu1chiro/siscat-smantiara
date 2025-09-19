@@ -1,1 +1,709 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dashboard - Catatan Pelanggaran</title><script src="https://cdn.tailwindcss.com"></script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script>var _0x5bb05b=_0x3856;(function(_0x136725,_0x5ba635){var _0x153776=_0x3856,_0x34783d=_0x136725();while(!![]){try{var _0x1364bc=parseInt(_0x153776(0x174))/0x1*(-parseInt(_0x153776(0x184))/0x2)+-parseInt(_0x153776(0x18b))/0x3*(parseInt(_0x153776(0x173))/0x4)+-parseInt(_0x153776(0x183))/0x5*(parseInt(_0x153776(0x186))/0x6)+-parseInt(_0x153776(0x17b))/0x7+-parseInt(_0x153776(0x189))/0x8+-parseInt(_0x153776(0x181))/0x9+-parseInt(_0x153776(0x176))/0xa*(-parseInt(_0x153776(0x18e))/0xb);if(_0x1364bc===_0x5ba635)break;else _0x34783d['push'](_0x34783d['shift']());}catch(_0x47c0b9){_0x34783d['push'](_0x34783d['shift']());}}}(_0x1012,0x87583));var _0x1889ba=(function(){var _0x497d4e=!![];return function(_0x4aaaf2,_0x3b3237){var _0x45801b=_0x497d4e?function(){var _0x2dcdbd=_0x3856;if(_0x3b3237){var _0x30b9d6=_0x3b3237[_0x2dcdbd(0x180)](_0x4aaaf2,arguments);return _0x3b3237=null,_0x30b9d6;}}:function(){};return _0x497d4e=![],_0x45801b;};}()),_0x3ec069=_0x1889ba(this,function(){var _0x12768f=_0x3856;return _0x3ec069[_0x12768f(0x17d)]()['search']('(((.+)+)+)+$')['toString']()[_0x12768f(0x17c)](_0x3ec069)[_0x12768f(0x170)](_0x12768f(0x179));});function _0x3856(_0x1b62b2,_0x5647b7){var _0x4e8ac6=_0x1012();return _0x3856=function(_0x3ec069,_0x1889ba){_0x3ec069=_0x3ec069-0x170;var _0x1012aa=_0x4e8ac6[_0x3ec069];return _0x1012aa;},_0x3856(_0x1b62b2,_0x5647b7);}_0x3ec069(),tailwind[_0x5bb05b(0x178)]={'darkMode':_0x5bb05b(0x171),'theme':{'extend':{'colors':{'primary':{0x32:_0x5bb05b(0x18d),0x64:_0x5bb05b(0x182),0xc8:_0x5bb05b(0x187),0x12c:_0x5bb05b(0x18f),0x190:_0x5bb05b(0x17a),0x1f4:_0x5bb05b(0x18a),0x258:'#2563eb',0x2bc:'#1d4ed8',0x320:_0x5bb05b(0x17f),0x384:_0x5bb05b(0x188)},'education':{0x32:_0x5bb05b(0x17e),0x64:_0x5bb05b(0x18c),0xc8:_0x5bb05b(0x177),0x12c:'#7dd3fc',0x190:'#38bdf8',0x1f4:'#0ea5e9',0x258:_0x5bb05b(0x185),0x2bc:_0x5bb05b(0x172),0x320:'#075985',0x384:_0x5bb05b(0x175)}}}}};function _0x1012(){var _0x47510d=['2589120lLIHOt','#3b82f6','3PlJgAL','#e0f2fe','#eff6ff','38177117ovsGVY','#93c5fd','search','class','#0369a1','3002292bWkXfN','128740WlKjfz','#0c4a6e','10DAWQNy','#bae6fd','config','(((.+)+)+)+$','#60a5fa','5796jrVhzW','constructor','toString','#f0f9ff','#1e40af','apply','7759719ZgcgpN','#dbeafe','97330iQPTdz','14kUumEl','#0284c7','24RMBLWS','#bfdbfe','#1e3a8a'];_0x1012=function(){return _0x47510d;};return _0x1012();}</script><link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"><style>h1,h2,h3,p{font-family:Inter,sans-serif;font-optical-sizing:auto}a{font-family:Inter,sans-serif;font-optical-sizing:auto}button{font-family:Inter,sans-serif;font-optical-sizing:auto}div{font-family:Montserrat,sans-serif!important}::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:#f1f5f9;border-radius:10px}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#3b82f6,#1d4ed8);border-radius:10px}::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#1d4ed8,#1e3a8a)}.dark ::-webkit-scrollbar-track{background:#1e293b}.gradient-bg{background:linear-gradient(135deg,#667eea 0,#764ba2 100%)}.education-gradient{background:linear-gradient(135deg,#0ea5e9 0,#0369a1 100%)}.hover-card:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,.1)}.form-input:focus{transform:scale(1.02);box-shadow:0 0 0 3px rgba(59,130,246,.1)}.fade-in{animation:fadeIn .5s ease-in}@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.slide-in{animation:slideIn .6s ease-out}@keyframes slideIn{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}</style></head><body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 min-h-screen"><nav class="bg-white shadow-md sticky top-0 z-40"><div class="container mx-auto px-6 py-5 flex justify-between items-center mb-5"><a class="text-xl font-bold text-primary" href="/dashboard">Dashboard</a><div class="hidden md:flex space-x-6 items-center"><a class="block text-slate-600 hover:text-primary transition" href="/dashboard">Dashboard</a> <a class="block text-slate-600 hover:text-primary transition" href="/statistik">Statistik</a> <a class="block text-slate-600 hover:text-primary transition" href="/aduan-siswa">Aduan Siswa</a> <a class="block mt-2 bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-lg text-sm font-medium transition" href="/api/auth/logout">Logout</a></div><button id="mobile-menu-button" class="md:hidden"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button></div><div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2"><a class="block text-slate-600 hover:text-primary transition" href="/dashboard">Dashboard</a> <a class="block text-slate-600 hover:text-primary transition" href="/statistik">Statistik</a> <a class="block text-slate-600 hover:text-primary transition" href="/aduan-siswa">Aduan Siswa</a> <a class="block mt-2 bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-lg text-sm font-medium transition" href="/api/auth/logout">Logout</a></div></nav><script>function _0x17bd(){const _0x11419f=['28359TgSkJl','addEventListener','mobile-menu','8757830TOfPAx','search','536KnbXLv','95936kymKZf','24QLpjWA','toggle','12oNbBZf','getElementById','11kJLVxx','mobile-menu-button','click','constructor','1609062TqNwSY','toString','286389uJiVpN','hidden','3246936OPoRHp','(((.+)+)+)+$','1770365mhTXQw'];_0x17bd=function(){return _0x11419f;};return _0x17bd();}const _0x1c370b=_0x3662;(function(_0x2156d3,_0x16a397){const _0x1f3860=_0x3662,_0x451bb2=_0x2156d3();while(!![]){try{const _0x8618c7=-parseInt(_0x1f3860(0x1dd))/0x1*(-parseInt(_0x1f3860(0x1e0))/0x2)+parseInt(_0x1f3860(0x1e8))/0x3*(-parseInt(_0x1f3860(0x1de))/0x4)+parseInt(_0x1f3860(0x1ec))/0x5+-parseInt(_0x1f3860(0x1e6))/0x6+-parseInt(_0x1f3860(0x1ea))/0x7+-parseInt(_0x1f3860(0x1dc))/0x8*(parseInt(_0x1f3860(0x1ed))/0x9)+-parseInt(_0x1f3860(0x1da))/0xa*(-parseInt(_0x1f3860(0x1e2))/0xb);if(_0x8618c7===_0x16a397)break;else _0x451bb2['push'](_0x451bb2['shift']());}catch(_0x5e0131){_0x451bb2['push'](_0x451bb2['shift']());}}}(_0x17bd,0x46b10));const _0x10e6e7=(function(){let _0x216a6c=!![];return function(_0x282008,_0x13ae99){const _0xbf6652=_0x216a6c?function(){if(_0x13ae99){const _0x1bc878=_0x13ae99['apply'](_0x282008,arguments);return _0x13ae99=null,_0x1bc878;}}:function(){};return _0x216a6c=![],_0xbf6652;};}()),_0x59628e=_0x10e6e7(this,function(){const _0x3633f9=_0x3662;return _0x59628e[_0x3633f9(0x1e7)]()[_0x3633f9(0x1db)](_0x3633f9(0x1eb))['toString']()[_0x3633f9(0x1e5)](_0x59628e)[_0x3633f9(0x1db)]('(((.+)+)+)+$');});_0x59628e();function _0x3662(_0x1a07dc,_0x3d2d0e){const _0x5bb0ac=_0x17bd();return _0x3662=function(_0x59628e,_0x10e6e7){_0x59628e=_0x59628e-0x1d9;let _0x17bdf0=_0x5bb0ac[_0x59628e];return _0x17bdf0;},_0x3662(_0x1a07dc,_0x3d2d0e);}const mobileMenuButton=document['getElementById'](_0x1c370b(0x1e3)),mobileMenu=document[_0x1c370b(0x1e1)](_0x1c370b(0x1d9));mobileMenuButton[_0x1c370b(0x1ee)](_0x1c370b(0x1e4),()=>{const _0x2bdc1c=_0x1c370b;mobileMenu['classList'][_0x2bdc1c(0x1df)](_0x2bdc1c(0x1e9));});</script><main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 space-y-8"><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 fade-in"><div class="bg-white/70 dark:bg-gray-800/70 p-6 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover-card"><div class="flex items-center"><div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><div class="ml-4"><p class="text-sm font-medium text-gray-600 dark:text-gray-400">Total Pelanggaran</p><p class="text-2xl font-bold text-gray-900 dark:text-white" id="totalStats">0</p></div></div></div><div class="bg-white/70 dark:bg-gray-800/70 p-6 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover-card"><div class="flex items-center"><div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div><div class="ml-4"><p class="text-sm font-medium text-gray-600 dark:text-gray-400">Hari Ini</p><p class="text-2xl font-bold text-gray-900 dark:text-white" id="todayStats">0</p></div></div></div><div class="bg-white/70 dark:bg-gray-800/70 p-6 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover-card"><div class="flex items-center"><div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/></svg></div><div class="ml-4"><p class="text-sm font-medium text-gray-600 dark:text-gray-400">Siswa Terlibat</p><p class="text-2xl font-bold text-gray-900 dark:text-white" id="studentStats">0</p></div></div></div></div><div class="bg-white/80 dark:bg-gray-800/80 p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 hover-card slide-in"><div class="flex items-center space-x-3 mb-8"><div class="w-10 h-10 education-gradient rounded-xl flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg></div><h2 id="formTitle" class="text-2xl font-bold text-gray-900 dark:text-white">Tambah Data Pelanggaran</h2></div><form id="pelanggaranForm" class="grid grid-cols-1 lg:grid-cols-2 gap-6"><input type="hidden" id="pelanggaranId"><div class="space-y-2"><label for="nama" class="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg> <span>Nama Lengkap</span></label> <input type="text" id="nama" class="form-input w-full px-4 py-3 rounded-xl bg-gray-50/80 dark:bg-gray-700/50 border-2 border-gray-200 dark:border-gray-600 focus:border-education-500 focus:ring-0" placeholder="Masukkan nama lengkap siswa" required></div><div class="space-y-2"><label for="kelas" class="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg> <span>Kelas</span></label> <input type="text" id="kelas" class="form-input w-full px-4 py-3 rounded-xl bg-gray-50/80 dark:bg-gray-700/50 border-2 border-gray-200 dark:border-gray-600 focus:border-education-500 focus:ring-0" placeholder="Contoh: XII IPA 1" required></div><div class="space-y-2"><label for="jenis_pelanggaran" class="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg> <span>Jenis Pelanggaran</span></label> <input type="text" id="jenis_pelanggaran" class="form-input w-full px-4 py-3 rounded-xl bg-gray-50/80 dark:bg-gray-700/50 border-2 border-gray-200 dark:border-gray-600 focus:border-education-500 focus:ring-0" placeholder="Contoh: Terlambat, Tidak mengerjakan tugas, dll" required></div><div class="lg:col-span-2 space-y-2"><label for="catatan" class="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg> <span>Catatan Detail</span></label> <textarea id="catatan" rows="4" class="form-input w-full px-4 py-3 rounded-xl bg-gray-50/80 dark:bg-gray-700/50 border-2 border-gray-200 dark:border-gray-600 focus:border-education-500 focus:ring-0 resize-none" placeholder="Deskripsi detail tentang pelanggaran yang terjadi..." required></textarea></div><div class="lg:col-span-2 flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-6"><button type="submit" id="submitBtn" class="w-full sm:w-auto group relative bg-gradient-to-r from-education-500 to-education-600 hover:from-education-600 hover:to-education-700 text-white font-bold py-3 px-8 rounded-xl transform hover:scale-105 shadow-lg hover:shadow-xl"><span class="relative z-10 flex items-center justify-center space-x-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <span>Simpan Data</span></span><div class="absolute inset-0 bg-gradient-to-r from-education-600 to-education-700 rounded-xl opacity-0 group-hover:opacity-100"></div></button> <button type="button" id="cancelBtn" class="w-full sm:w-auto group relative bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white font-bold py-3 px-8 rounded-xl transform hover:scale-105 shadow-lg hover:shadow-xl hidden"><span class="relative z-10 flex items-center justify-center space-x-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg> <span>Batal</span></span><div class="absolute inset-0 bg-gradient-to-r from-gray-600 to-gray-700 rounded-xl opacity-0 group-hover:opacity-100"></div></button></div></form></div><div class="bg-white/80 dark:bg-gray-800/80 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden fade-in"><div class="px-8 py-6 bg-gradient-to-r from-education-50 to-primary-50 dark:from-gray-700/50 dark:to-gray-800/50 border-b border-gray-200/50 dark:border-gray-700/50"><div class="flex items-center space-x-3"><div class="w-10 h-10 education-gradient rounded-xl flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2z"/></svg></div><h3 class="text-2xl font-bold text-gray-900 dark:text-white">Data Pelanggaran</h3></div></div><div class="p-6 bg-gray-50/50 dark:bg-gray-700/30"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"><div class="relative"><div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><input type="text" id="searchNama" placeholder="Cari berdasarkan nama..." class="form-input block w-full pl-10 pr-4 py-3 rounded-xl bg-white/80 dark:bg-gray-600/50 border-2 border-gray-200 dark:border-gray-500 focus:border-education-500 focus:ring-0"></div><div class="relative"><div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><input type="text" id="searchKelas" placeholder="Cari berdasarkan kelas..." class="form-input block w-full pl-10 pr-4 py-3 rounded-xl bg-white/80 dark:bg-gray-600/50 border-2 border-gray-200 dark:border-gray-500 focus:border-education-500 focus:ring-0"></div><div class="relative"><div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div><input type="date" id="searchTanggal" class="form-input block w-full pl-10 pr-4 py-3 rounded-xl bg-white/80 dark:bg-gray-600/50 border-2 border-gray-200 dark:border-gray-500 focus:border-education-500 focus:ring-0"></div></div></div><div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200/50 dark:divide-gray-700/50"><thead class="bg-gradient-to-r from-education-500 to-primary-600 text-white"><tr><th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider"><div class="flex items-center space-x-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg> <span>Siswa</span></div></th><th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider"><div class="flex items-center space-x-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg> <span>Kelas</span></div></th><th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider"><div class="flex items-center space-x-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg> <span>Pelanggaran</span></div></th><th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider"><div class="flex items-center space-x-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> <span>Tanggal</span></div></th><th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider"><div class="flex items-center space-x-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg> <span>Aksi</span></div></th></tr></thead><tbody id="pelanggaranList" class="bg-white dark:bg-gray-800 divide-y divide-gray-200/30 dark:divide-gray-700/30"></tbody></table></div></div></main><script>function _0x2d15(_0x4dcc41,_0x3dccee){const _0x2bcfd9=_0x2b92();return _0x2d15=function(_0x2d4592,_0x552d8a){_0x2d4592=_0x2d4592-0x73;let _0x2b925b=_0x2bcfd9[_0x2d4592];return _0x2b925b;},_0x2d15(_0x4dcc41,_0x3dccee);}const _0x2de98c=_0x2d15;(function(_0x561a54,_0x2f30dc){const _0x3576e9=_0x2d15,_0x26acdb=_0x561a54();while(!![]){try{const _0x3a9b2=parseInt(_0x3576e9(0xcb))/0x1*(parseInt(_0x3576e9(0xec))/0x2)+-parseInt(_0x3576e9(0xd9))/0x3+-parseInt(_0x3576e9(0x7e))/0x4+-parseInt(_0x3576e9(0xbf))/0x5+-parseInt(_0x3576e9(0xe2))/0x6+-parseInt(_0x3576e9(0xbe))/0x7*(parseInt(_0x3576e9(0x7a))/0x8)+-parseInt(_0x3576e9(0xe7))/0x9*(-parseInt(_0x3576e9(0xaa))/0xa);if(_0x3a9b2===_0x2f30dc)break;else _0x26acdb['push'](_0x26acdb['shift']());}catch(_0x192766){_0x26acdb['push'](_0x26acdb['shift']());}}}(_0x2b92,0x2a91f));const _0x552d8a=(function(){let _0x39cbf3=!![];return function(_0x142ca7,_0x16ab4e){const _0x126ac6=_0x39cbf3?function(){const _0xc899ad=_0x2d15;if(_0x16ab4e){const _0x1bf900=_0x16ab4e[_0xc899ad(0xe3)](_0x142ca7,arguments);return _0x16ab4e=null,_0x1bf900;}}:function(){};return _0x39cbf3=![],_0x126ac6;};}()),_0x2d4592=_0x552d8a(this,function(){const _0x4db740=_0x2d15;return _0x2d4592['toString']()['search'](_0x4db740(0xab))[_0x4db740(0xc2)]()[_0x4db740(0x77)](_0x2d4592)[_0x4db740(0xa9)](_0x4db740(0xab));});function _0x2b92(){const _0xe4ced3=['Update\x20Data','2-digit','\x22\x20target=\x22_blank\x22\x20class=\x22px-4\x20py-2\x20text-sm\x20font-semibold\x20text-green-600\x20bg-green-50\x20hover:bg-green-600\x20hover:text-white\x20rounded-lg\x22>PDF</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-left\x20p-4\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22mb-4\x20p-2\x22><h2\x20class=\x22text-2xl\x20font-bold\x20text-gray-800\x20dark:text-white\x22>','toLocaleDateString','span','</h4><span\x20class=\x22text-xs\x20font-mono\x20text-gray-500\x20dark:text-gray-400\x20flex-shrink-0\x22>','startsWith','#ef4444','search','16180hYHzmv','(((.+)+)+)+$','warning','/api/pelanggaran/add','Update\x20Data\x20Pelanggaran','todayStats','POST','stringify','/login','split','success','Ya,\x20Hapus!','fire','error','long','appendChild','click','classList','nama','editData','618149cKGLdc','1600155ecWAAr','top-end','createElement','toString','smooth','</span></div><p\x20class=\x22text-sm\x20text-gray-600\x20dark:text-gray-300\x20flex-grow\x22>','jenis_pelanggaran','Terjadi\x20kesalahan.','submitBtn','toLowerCase','\x20|\x20Total\x20Pelanggaran:\x20','studentStats','273145FDIYeJ','Gagal\x20memuat\x20data.','replace','catatan','includes','short','</p></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<hr\x20class=\x22border-gray-200\x20dark:border-gray-700\x20mb-4\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22grid\x20grid-cols-1\x20md:grid-cols-2\x20gap-4\x20max-h-[60vh]\x20overflow-y-auto\x20p-2\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','disabled','getTime','hidden','Simpan\x20Data','status','</h2><p\x20class=\x22text-md\x20text-gray-500\x20dark:text-gray-400\x22>Kelas:\x20','value','659964bFrVlV','/api/pelanggaran/delete/','formTitle','trim','pelanggaranId','forEach','isConfirmed','application/json','join','1462800QKXBaS','apply','PUT','querySelector','totalStats','4815OcNmyN','sort','pelanggaranList','cancelBtn','className','2qLeTKS','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22px-6\x20py-4\x22>','then','deleteData','/api/pelanggaran/update/','m-0','input','viewHistory','\x27)\x22\x20class=\x22px-4\x20py-2\x20text-sm\x20font-semibold\x20text-cyan-600\x20bg-cyan-50\x20hover:bg-cyan-600\x20hover:text-white\x20rounded-lg\x22>Riwayat</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22editData(\x27','Konfirmasi\x20Hapus\x20Data','constructor','pelanggaranForm','add','16sJvpMA','text-gray-500\x20hover:text-red-500\x20dark:text-gray-400','addEventListener','searchTanggal','15900oJekAI','rounded-2xl\x20shadow-2xl\x20p-0\x20bg-white\x20dark:bg-gray-900','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','max','remove','DOMContentLoaded','map','numeric','\x27)\x22\x20class=\x22px-4\x20py-2\x20text-sm\x20font-semibold\x20text-indigo-600\x20bg-indigo-50\x20hover:bg-indigo-600\x20hover:text-white\x20rounded-lg\x22>Edit</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22deleteData(\x27','textContent','hover:bg-gray-50','searchKelas','timestamp','/api/pelanggaran/list','scrollTo','submit','filter','innerHTML','kelas','isArray','id-ID','push','preventDefault','Gagal\x20mengambil\x20data','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22px-6\x20py-4\x20font-bold\x22>','toISOString','getElementById','Data\x20yang\x20dihapus\x20tidak\x20dapat\x20dikembalikan!','message','size','json','1rem','reduce','length'];_0x2b92=function(){return _0xe4ced3;};return _0x2b92();}_0x2d4592(),document['addEventListener'](_0x2de98c(0x83),()=>{const _0x458c95=_0x2de98c,_0x526bef=document[_0x458c95(0x98)](_0x458c95(0x78)),_0x13d0d8=document[_0x458c95(0x98)](_0x458c95(0xdb)),_0x5196f1=document[_0x458c95(0x98)](_0x458c95(0xc7)),_0x19e49e=document[_0x458c95(0x98)](_0x458c95(0xea)),_0xa4fa80=document[_0x458c95(0x98)](_0x458c95(0xe9)),_0x6b8ce=document[_0x458c95(0x98)]('searchNama'),_0x1ae227=document['getElementById'](_0x458c95(0x89)),_0x2e3ebc=document['getElementById'](_0x458c95(0x7d)),_0x5ef4bb=document[_0x458c95(0x98)](_0x458c95(0xe6)),_0x13621d=document['getElementById'](_0x458c95(0xaf)),_0x2ebf7d=document[_0x458c95(0x98)](_0x458c95(0xca)),_0x48b3b8=Swal['mixin']({'toast':!![],'position':_0x458c95(0xc0),'showConfirmButton':![],'timer':0xbb8,'timerProgressBar':!![]});let _0x167e16=[];const _0x1ab7e2=async()=>{const _0x280148=_0x458c95;try{const _0x37ffae=await fetch(_0x280148(0x8b));if(_0x37ffae[_0x280148(0xd6)]===0x191){window['location']['href']=_0x280148(0xb2);return;}if(!_0x37ffae['ok'])throw new Error(_0x280148(0x95));const _0x3f1585=await _0x37ffae[_0x280148(0x9c)]();_0x167e16=Array[_0x280148(0x91)](_0x3f1585)?_0x3f1585:[],_0x40fc73(_0x167e16),_0x269a46(_0x167e16);}catch(_0x1657ed){_0x48b3b8[_0x280148(0xb6)]({'icon':'error','title':_0x280148(0xcc)});}},_0x269a46=_0x271198=>{const _0x4a3ce1=_0x458c95;_0xa4fa80[_0x4a3ce1(0x8f)]='';if(_0x271198[_0x4a3ce1(0x9f)]===0x0){_0xa4fa80[_0x4a3ce1(0x8f)]='<tr><td\x20colspan=\x225\x22\x20class=\x22text-center\x20py-16\x22><h3\x20class=\x22text-lg\x20font-semibold\x22>Belum\x20ada\x20data\x20pelanggaran</h3></td></tr>';return;}const _0x504f92=_0x271198[_0x4a3ce1(0x9e)]((_0x3c192a,_0x7c2e91)=>{const _0xf76631=_0x4a3ce1,_0x2ea31e=_0x7c2e91[_0xf76631(0xbc)]['toLowerCase']()['trim']();if(!_0x3c192a[_0x2ea31e])_0x3c192a[_0x2ea31e]=[];return _0x3c192a[_0x2ea31e][_0xf76631(0x93)](_0x7c2e91),_0x3c192a;},{}),_0x4ad77e=Object['values'](_0x504f92)[_0x4a3ce1(0xe8)]((_0x3e2996,_0x47143a)=>{const _0xe02f77=_0x4a3ce1,_0x395cdd=Math[_0xe02f77(0x81)](..._0x3e2996[_0xe02f77(0x84)](_0x2fcecb=>_0x2fcecb['timestamp']?new Date(_0x2fcecb[_0xe02f77(0x8a)])[_0xe02f77(0xd3)]():0x0)),_0x11dd82=Math[_0xe02f77(0x81)](..._0x47143a[_0xe02f77(0x84)](_0x48a038=>_0x48a038[_0xe02f77(0x8a)]?new Date(_0x48a038[_0xe02f77(0x8a)])[_0xe02f77(0xd3)]():0x0));return _0x11dd82-_0x395cdd;});_0x4ad77e[_0x4a3ce1(0xde)]((_0x491cb8,_0x45647c)=>{const _0x27b2fa=_0x4a3ce1,_0xa356dd=_0x491cb8['sort']((_0x3b192f,_0x2cccb9)=>_0x2cccb9[_0x27b2fa(0x8a)]&&_0x3b192f[_0x27b2fa(0x8a)]?new Date(_0x2cccb9[_0x27b2fa(0x8a)])-new Date(_0x3b192f[_0x27b2fa(0x8a)]):0x0)[0x0],{id:_0x1d6c37,nama:_0x5e2587,kelas:_0x5c16d6,jenis_pelanggaran:_0x442879,timestamp:timestamp=new Date()['toISOString']()}=_0xa356dd,_0x3e9283=encodeURIComponent(_0x5e2587),_0x54d7e5=document[_0x27b2fa(0xc1)]('tr');_0x54d7e5[_0x27b2fa(0xeb)]=_0x27b2fa(0x88),_0x54d7e5['innerHTML']=_0x27b2fa(0x96)+_0x5e2587+_0x27b2fa(0xed)+_0x5c16d6+_0x27b2fa(0xed)+_0x442879+'</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22px-6\x20py-4\x22>'+new Date(timestamp)[_0x27b2fa(0xa4)](_0x27b2fa(0x92),{'day':_0x27b2fa(0xa1),'month':_0x27b2fa(0xb8),'year':_0x27b2fa(0x85)})+'</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22px-6\x20py-4\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20items-center\x20space-x-2\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22viewHistory(\x27'+_0x5e2587[_0x27b2fa(0xcd)](/'/g,'\x5c\x27')+_0x27b2fa(0x75)+_0x1d6c37+_0x27b2fa(0x86)+_0x1d6c37+'\x27)\x22\x20class=\x22px-4\x20py-2\x20text-sm\x20font-semibold\x20text-red-600\x20bg-red-50\x20hover:bg-red-600\x20hover:text-white\x20rounded-lg\x22>Hapus</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22/detail-siswa?nama='+_0x3e9283+_0x27b2fa(0xa2),_0xa4fa80[_0x27b2fa(0xb9)](_0x54d7e5);});},_0x40fc73=_0x4a7ee3=>{const _0x30134f=_0x458c95,_0xfbdcc5=new Date()[_0x30134f(0x97)]()[_0x30134f(0xb3)]('T')[0x0],_0x1dd1ec=_0x4a7ee3[_0x30134f(0x8e)](_0x35fba5=>_0x35fba5[_0x30134f(0x8a)]&&_0x35fba5[_0x30134f(0x8a)][_0x30134f(0xa7)](_0xfbdcc5)),_0x35baba=new Set(_0x4a7ee3['map'](_0x5c8db4=>_0x5c8db4['nama']['toLowerCase']()[_0x30134f(0xdc)]()))[_0x30134f(0x9b)];_0x5ef4bb[_0x30134f(0x87)]=_0x4a7ee3[_0x30134f(0x9f)],_0x13621d[_0x30134f(0x87)]=_0x1dd1ec[_0x30134f(0x9f)],_0x2ebf7d[_0x30134f(0x87)]=_0x35baba;},_0x28f5eb=()=>{const _0xe3be96=_0x458c95,_0x2487b7=_0x6b8ce['value'][_0xe3be96(0xc8)](),_0x5dee50=_0x1ae227[_0xe3be96(0xd8)][_0xe3be96(0xc8)](),_0x29e15d=_0x2e3ebc['value'],_0x57c6d6=_0x167e16[_0xe3be96(0x8e)](_0xdc1b03=>{const _0x3a98f8=_0xe3be96,_0x1c484d=_0xdc1b03[_0x3a98f8(0x8a)]?_0xdc1b03[_0x3a98f8(0x8a)][_0x3a98f8(0xb3)]('T')[0x0]:'',_0x4ea62e=_0xdc1b03['nama'][_0x3a98f8(0xc8)]()[_0x3a98f8(0xcf)](_0x2487b7),_0x41e293=_0xdc1b03[_0x3a98f8(0x90)][_0x3a98f8(0xc8)]()[_0x3a98f8(0xcf)](_0x5dee50),_0x55f4da=!_0x29e15d||_0x1c484d===_0x29e15d;return _0x4ea62e&&_0x41e293&&_0x55f4da;});_0x269a46(_0x57c6d6);},_0x1a2dcb=()=>{const _0x303de6=_0x458c95;_0x526bef['reset'](),document[_0x303de6(0x98)](_0x303de6(0xdd))['value']='',_0x13d0d8[_0x303de6(0x87)]='Tambah\x20Data\x20Pelanggaran',_0x5196f1[_0x303de6(0xe5)](_0x303de6(0xa5))[_0x303de6(0x87)]=_0x303de6(0xd5),_0x19e49e['classList'][_0x303de6(0x79)](_0x303de6(0xd4));};window[_0x458c95(0x74)]=_0x80af32=>{const _0x2b45e7=_0x458c95,_0x4579d2=_0x167e16['filter'](_0x1c8226=>_0x1c8226[_0x2b45e7(0xbc)]['toLowerCase']()['trim']()===_0x80af32[_0x2b45e7(0xc8)]()[_0x2b45e7(0xdc)]())[_0x2b45e7(0xe8)]((_0x29622f,_0x335b76)=>new Date(_0x335b76[_0x2b45e7(0x8a)])-new Date(_0x29622f['timestamp']));if(_0x4579d2[_0x2b45e7(0x9f)]===0x0)return;const _0x16a4c3=_0x4579d2[0x0]['kelas'],_0x58907f=_0x2b45e7(0xa3)+_0x80af32+_0x2b45e7(0xd7)+_0x16a4c3+_0x2b45e7(0xc9)+_0x4579d2[_0x2b45e7(0x9f)]+_0x2b45e7(0xd1)+_0x4579d2['map'](_0x19d8d9=>{const _0x4bea01=_0x2b45e7,_0x1533c0=new Date(_0x19d8d9['timestamp'])[_0x4bea01(0xa4)]('id-ID',{'day':_0x4bea01(0xa1),'month':_0x4bea01(0xd0),'year':_0x4bea01(0x85)});return'<div\x20class=\x22p-4\x20rounded-xl\x20border\x20border-gray-200\x20dark:border-gray-700\x20bg-gray-50\x20dark:bg-gray-800/50\x20flex\x20flex-col\x20h-full\x22><div\x20class=\x22flex\x20justify-between\x20items-start\x20mb-2\x22><h4\x20class=\x22font-bold\x20text-md\x20text-education-600\x20dark:text-education-400\x20pr-2\x22>'+_0x19d8d9['jenis_pelanggaran']+_0x4bea01(0xa6)+_0x1533c0+_0x4bea01(0xc4)+_0x19d8d9[_0x4bea01(0xce)]+'</p></div>';})[_0x2b45e7(0xe1)]('')+_0x2b45e7(0x80);Swal[_0x2b45e7(0xb6)]({'html':_0x58907f,'width':'700px','showCloseButton':!![],'showConfirmButton':![],'padding':_0x2b45e7(0x9d),'customClass':{'popup':_0x2b45e7(0x7f),'htmlContainer':_0x2b45e7(0xf1),'closeButton':_0x2b45e7(0x7b)}});},window[_0x458c95(0xbd)]=_0x20e3da=>{const _0xe90605=_0x458c95,_0x1b3f4a=_0x167e16['find'](_0x36efd8=>_0x36efd8['id']===_0x20e3da);if(!_0x1b3f4a)return;document[_0xe90605(0x98)](_0xe90605(0xdd))[_0xe90605(0xd8)]=_0x20e3da,document['getElementById'](_0xe90605(0xbc))[_0xe90605(0xd8)]=_0x1b3f4a['nama'],document[_0xe90605(0x98)]('kelas')['value']=_0x1b3f4a[_0xe90605(0x90)],document[_0xe90605(0x98)](_0xe90605(0xc5))[_0xe90605(0xd8)]=_0x1b3f4a['jenis_pelanggaran'],document[_0xe90605(0x98)](_0xe90605(0xce))[_0xe90605(0xd8)]=_0x1b3f4a[_0xe90605(0xce)],_0x13d0d8[_0xe90605(0x87)]=_0xe90605(0xae),_0x5196f1['querySelector']('span')[_0xe90605(0x87)]=_0xe90605(0xa0),_0x19e49e[_0xe90605(0xbb)][_0xe90605(0x82)](_0xe90605(0xd4)),window[_0xe90605(0x8c)]({'top':0x0,'behavior':_0xe90605(0xc3)});},window[_0x458c95(0xef)]=_0x239c2b=>{const _0x48816d=_0x458c95;Swal[_0x48816d(0xb6)]({'title':_0x48816d(0x76),'text':_0x48816d(0x99),'icon':_0x48816d(0xac),'showCancelButton':!![],'confirmButtonColor':_0x48816d(0xa8),'confirmButtonText':_0x48816d(0xb5)})[_0x48816d(0xee)](async _0x111f1e=>{const _0x4579b9=_0x48816d;if(_0x111f1e[_0x4579b9(0xdf)])try{const _0x17ed8f=await fetch(_0x4579b9(0xda)+_0x239c2b,{'method':'DELETE'}),_0xdda7ee=await _0x17ed8f[_0x4579b9(0x9c)]();_0xdda7ee[_0x4579b9(0xb4)]?(_0x48b3b8[_0x4579b9(0xb6)]({'icon':_0x4579b9(0xb4),'title':'Data\x20berhasil\x20dihapus.'}),_0x1ab7e2()):_0x48b3b8[_0x4579b9(0xb6)]({'icon':_0x4579b9(0xb7),'title':_0xdda7ee['message']});}catch(_0x2e3232){_0x48b3b8['fire']({'icon':_0x4579b9(0xb7),'title':_0x4579b9(0xc6)});}});},[_0x6b8ce,_0x1ae227,_0x2e3ebc][_0x458c95(0xde)](_0x4a6c71=>{const _0x592ca2=_0x458c95;_0x4a6c71[_0x592ca2(0x7c)](_0x592ca2(0x73),_0x28f5eb);}),_0x19e49e[_0x458c95(0x7c)](_0x458c95(0xba),_0x1a2dcb),_0x526bef[_0x458c95(0x7c)](_0x458c95(0x8d),async _0xdf422a=>{const _0x5bf830=_0x458c95;_0xdf422a[_0x5bf830(0x94)]();const _0x1ca397=document[_0x5bf830(0x98)](_0x5bf830(0xdd))[_0x5bf830(0xd8)],_0xfa0124={'nama':document[_0x5bf830(0x98)](_0x5bf830(0xbc))['value'],'kelas':document[_0x5bf830(0x98)](_0x5bf830(0x90))[_0x5bf830(0xd8)],'jenis_pelanggaran':document[_0x5bf830(0x98)](_0x5bf830(0xc5))[_0x5bf830(0xd8)],'catatan':document['getElementById'](_0x5bf830(0xce))[_0x5bf830(0xd8)]},_0x41e035=!!_0x1ca397,_0x30b8f3=_0x41e035?_0x5bf830(0xf0)+_0x1ca397:_0x5bf830(0xad),_0x335db2=_0x41e035?_0x5bf830(0xe4):_0x5bf830(0xb0);_0x5196f1['disabled']=!![];try{const _0x174320=await fetch(_0x30b8f3,{'method':_0x335db2,'headers':{'Content-Type':_0x5bf830(0xe0)},'body':JSON[_0x5bf830(0xb1)](_0xfa0124)}),_0x3880e3=await _0x174320[_0x5bf830(0x9c)]();_0x3880e3[_0x5bf830(0xb4)]?(_0x48b3b8[_0x5bf830(0xb6)]({'icon':'success','title':_0x3880e3[_0x5bf830(0x9a)]}),_0x1a2dcb(),_0x1ab7e2()):_0x48b3b8[_0x5bf830(0xb6)]({'icon':_0x5bf830(0xb7),'title':_0x3880e3['message']});}catch(_0x3037c2){_0x48b3b8[_0x5bf830(0xb6)]({'icon':'error','title':'Terjadi\x20kesalahan.'});}finally{_0x5196f1[_0x5bf830(0xd2)]=![];}}),_0x1ab7e2();});</script></body></html>
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Catatan Pelanggaran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        },
+                        education: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+     <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+         h1,
+    h2,
+    h3,
+    p {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+
+    }
+
+    a {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+
+
+
+    }
+
+    button {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+
+
+
+    }
+
+    div {
+        font-family: "Montserrat", sans-serif !important;
+
+
+    }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #1d4ed8, #1e3a8a);
+        }
+
+        /* Dark mode scrollbar */
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        /* Gradient backgrounds */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .education-gradient {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+        }
+
+        /* Card hover effects */
+
+
+        .hover-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form focus effects */
+
+
+        .form-input:focus {
+            transform: scale(1.02);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in {
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 min-h-screen">
+<nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-6 py-5 flex justify-between items-center mb-5">
+            <a class="text-xl font-bold text-primary" href="/dashboard">Dashboard</a>
+            <div class="hidden md:flex space-x-6 items-center">
+            <a class="block text-slate-600 hover:text-primary transition" href="/dashboard">Dashboard</a>
+             <a class="block text-slate-600 hover:text-primary transition" href="/statistik">Statistik</a>
+             <a class="block text-slate-600 hover:text-primary transition" href="/aduan-siswa">Aduan Siswa</a>
+             <a class="block mt-2 bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-lg text-sm font-medium transition" href="/api/auth/logout">Logout</a>
+
+            </div>
+            <button id="mobile-menu-button" class="md:hidden">
+                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+             <a class="block text-slate-600 hover:text-primary transition" href="/dashboard">Dashboard</a>
+             <a class="block text-slate-600 hover:text-primary transition" href="/statistik">Statistik</a>
+             <a class="block text-slate-600 hover:text-primary transition" href="/aduan-siswa">Aduan Siswa</a>
+             <a class="block mt-2 bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-lg text-sm font-medium transition" href="/api/auth/logout">Logout</a>
+        </div>
+    </nav>
+    <script>
+         // === Fungsi Mobile Menu ===
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+    
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 space-y-8">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 fade-in">
+            <div
+                class="bg-white/70 dark:bg-gray-800/70  p-6 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover-card">
+                <div class="flex items-center">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Total Pelanggaran</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white" id="totalStats">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="bg-white/70 dark:bg-gray-800/70  p-6 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover-card">
+                <div class="flex items-center">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Hari Ini</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white" id="todayStats">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="bg-white/70 dark:bg-gray-800/70  p-6 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover-card">
+                <div class="flex items-center">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Siswa Terlibat</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white" id="studentStats">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div
+            class="bg-white/80 dark:bg-gray-800/80  p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 hover-card slide-in">
+            <div class="flex items-center space-x-3 mb-8">
+                <div class="w-10 h-10 education-gradient rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                </div>
+                <h2 id="formTitle" class="text-2xl font-bold text-gray-900 dark:text-white">Tambah Data Pelanggaran</h2>
+            </div>
+
+            <form id="pelanggaranForm" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <input type="hidden" id="pelanggaranId">
+
+                <div class="space-y-2">
+                    <label for="nama"
+                        class="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <span>Nama Lengkap</span>
+                    </label>
+                    <input type="text" id="nama"
+                        class="form-input w-full px-4 py-3 rounded-xl bg-gray-50/80 dark:bg-gray-700/50 border-2 border-gray-200 dark:border-gray-600 focus:border-education-500 focus:ring-0  "
+                        placeholder="Masukkan nama lengkap siswa" required>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="kelas"
+                        class="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                        <span>Kelas</span>
+                    </label>
+                    <input type="text" id="kelas"
+                        class="form-input w-full px-4 py-3 rounded-xl bg-gray-50/80 dark:bg-gray-700/50 border-2 border-gray-200 dark:border-gray-600 focus:border-education-500 focus:ring-0  "
+                        placeholder="Contoh: XII IPA 1" required>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="jenis_pelanggaran"
+                        class="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                        </svg>
+                        <span>Jenis Pelanggaran</span>
+                    </label>
+                    <input type="text" id="jenis_pelanggaran"
+                        class="form-input w-full px-4 py-3 rounded-xl bg-gray-50/80 dark:bg-gray-700/50 border-2 border-gray-200 dark:border-gray-600 focus:border-education-500 focus:ring-0  "
+                        placeholder="Contoh: Terlambat, Tidak mengerjakan tugas, dll" required>
+                </div>
+
+                <div class="lg:col-span-2 space-y-2">
+                    <label for="catatan"
+                        class="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                        <span>Catatan Detail</span>
+                    </label>
+                    <textarea id="catatan" rows="4"
+                        class="form-input w-full px-4 py-3 rounded-xl bg-gray-50/80 dark:bg-gray-700/50 border-2 border-gray-200 dark:border-gray-600 focus:border-education-500 focus:ring-0 resize-none  "
+                        placeholder="Deskripsi detail tentang pelanggaran yang terjadi..." required></textarea>
+                </div>
+
+                <div
+                    class="lg:col-span-2 flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-6">
+                    <button type="submit" id="submitBtn"
+                        class="w-full sm:w-auto group relative bg-gradient-to-r from-education-500 to-education-600 hover:from-education-600 hover:to-education-700 text-white font-bold py-3 px-8 rounded-xl   transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <span class="relative z-10 flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Simpan Data</span>
+                        </span>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-education-600 to-education-700 rounded-xl opacity-0 group-hover:opacity-100  ">
+                        </div>
+                    </button>
+
+                    <button type="button" id="cancelBtn"
+                        class="w-full sm:w-auto group relative bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white font-bold py-3 px-8 rounded-xl   transform hover:scale-105 shadow-lg hover:shadow-xl hidden">
+                        <span class="relative z-10 flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            <span>Batal</span>
+                        </span>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-gray-600 to-gray-700 rounded-xl opacity-0 group-hover:opacity-100  ">
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Data Table Section -->
+        <div
+            class="bg-white/80 dark:bg-gray-800/80  rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden fade-in">
+            <div
+                class="px-8 py-6 bg-gradient-to-r from-education-50 to-primary-50 dark:from-gray-700/50 dark:to-gray-800/50 border-b border-gray-200/50 dark:border-gray-700/50">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 education-gradient rounded-xl flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Data Pelanggaran</h3>
+                </div>
+            </div>
+
+            <!-- Search Filters -->
+            <div class="p-6 bg-gray-50/50 dark:bg-gray-700/30">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="searchNama" placeholder="Cari berdasarkan nama..."
+                            class="form-input block w-full pl-10 pr-4 py-3 rounded-xl bg-white/80 dark:bg-gray-600/50 border-2 border-gray-200 dark:border-gray-500 focus:border-education-500 focus:ring-0  ">
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                        </div>
+                        <input type="text" id="searchKelas" placeholder="Cari berdasarkan kelas..."
+                            class="form-input block w-full pl-10 pr-4 py-3 rounded-xl bg-white/80 dark:bg-gray-600/50 border-2 border-gray-200 dark:border-gray-500 focus:border-education-500 focus:ring-0  ">
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <input type="date" id="searchTanggal"
+                            class="form-input block w-full pl-10 pr-4 py-3 rounded-xl bg-white/80 dark:bg-gray-600/50 border-2 border-gray-200 dark:border-gray-500 focus:border-education-500 focus:ring-0  ">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200/50 dark:divide-gray-700/50">
+                    <thead class="bg-gradient-to-r from-education-500 to-primary-600 text-white">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                    <span>Siswa</span>
+                                </div>
+                            </th>
+                            <th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                    </svg>
+                                    <span>Kelas</span>
+                                </div>
+                            </th>
+                            <th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                    </svg>
+                                    <span>Pelanggaran</span>
+                                </div>
+                            </th>
+                            <th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span>Tanggal</span>
+                                </div>
+                            </th>
+                            <th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    <span>Aksi</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="pelanggaranList"
+                        class="bg-white dark:bg-gray-800 divide-y divide-gray-200/30 dark:divide-gray-700/30">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+      <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Get All DOM Elements ---
+        const form = document.getElementById('pelanggaranForm');
+        const formTitle = document.getElementById('formTitle');
+        const submitBtn = document.getElementById('submitBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const pelanggaranList = document.getElementById('pelanggaranList');
+        const searchNamaInput = document.getElementById('searchNama');
+        const searchKelasInput = document.getElementById('searchKelas');
+        const searchTanggalInput = document.getElementById('searchTanggal');
+        const totalStats = document.getElementById('totalStats');
+        const todayStats = document.getElementById('todayStats');
+        const studentStats = document.getElementById('studentStats');
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+        });
+
+        let allData = [];
+
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/api/pelanggaran/list');
+                if (response.status === 401) {
+                    window.location.href = '/login';
+                    return;
+                }
+                if (!response.ok) throw new Error('Gagal mengambil data');
+                
+                const data = await response.json();
+                allData = Array.isArray(data) ? data : [];
+                updateStats(allData);
+                renderData(allData);
+            } catch (error) {
+                Toast.fire({ icon: 'error', title: 'Gagal memuat data.' });
+            }
+        };
+
+        const renderData = (dataArray) => {
+            pelanggaranList.innerHTML = '';
+            if (dataArray.length === 0) {
+                pelanggaranList.innerHTML = `<tr><td colspan="5" class="text-center py-16"><h3 class="text-lg font-semibold">Belum ada data pelanggaran</h3></td></tr>`;
+                return;
+            }
+
+            const groupedByStudent = dataArray.reduce((acc, item) => {
+                const studentName = item.nama.toLowerCase().trim();
+                if (!acc[studentName]) acc[studentName] = [];
+                acc[studentName].push(item);
+                return acc;
+            }, {});
+
+            const sortedStudents = Object.values(groupedByStudent).sort((a, b) => {
+                const latestA = Math.max(...a.map(item => item.timestamp ? new Date(item.timestamp).getTime() : 0));
+                const latestB = Math.max(...b.map(item => item.timestamp ? new Date(item.timestamp).getTime() : 0));
+                return latestB - latestA;
+            });
+
+            sortedStudents.forEach((records, index) => {
+                const latestRecord = records.sort((a, b) => (b.timestamp && a.timestamp) ? new Date(b.timestamp) - new Date(a.timestamp) : 0)[0];
+                const { id, nama, kelas, jenis_pelanggaran, timestamp = new Date().toISOString() } = latestRecord;
+                const encodedNama = encodeURIComponent(nama);
+                const row = document.createElement('tr');
+                row.className = `hover:bg-gray-50`;
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 font-bold">${nama}</td>
+                    <td class="px-6 py-4">${kelas}</td>
+                    <td class="px-6 py-4">${jenis_pelanggaran}</td>
+                    <td class="px-6 py-4">${new Date(timestamp).toLocaleDateString('id-ID', {day:'2-digit', month:'long', year:'numeric'})}</td>
+                    <td class="px-6 py-4">
+                        <div class="flex items-center space-x-2">
+                            <button onclick="viewHistory('${nama.replace(/'/g, "\\'")}')" class="px-4 py-2 text-sm font-semibold text-cyan-600 bg-cyan-50 hover:bg-cyan-600 hover:text-white rounded-lg">Riwayat</button>
+                            <button onclick="editData('${id}')" class="px-4 py-2 text-sm font-semibold text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white rounded-lg">Edit</button>
+                            <button onclick="deleteData('${id}')" class="px-4 py-2 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-600 hover:text-white rounded-lg">Hapus</button>
+                            <a href="/detail-siswa?nama=${encodedNama}" target="_blank" class="px-4 py-2 text-sm font-semibold text-green-600 bg-green-50 hover:bg-green-600 hover:text-white rounded-lg">PDF</a>
+                        </div>
+                    </td>
+                `;
+                pelanggaranList.appendChild(row);
+            });
+        };
+
+        const updateStats = (dataArray) => {
+            const today = new Date().toISOString().split('T')[0];
+            const todayData = dataArray.filter(item => item.timestamp && item.timestamp.startsWith(today));
+            const uniqueStudents = new Set(dataArray.map(item => item.nama.toLowerCase().trim())).size;
+            totalStats.textContent = dataArray.length;
+            todayStats.textContent = todayData.length;
+            studentStats.textContent = uniqueStudents;
+        };
+
+        const filterData = () => {
+            const searchNama = searchNamaInput.value.toLowerCase();
+            const searchKelas = searchKelasInput.value.toLowerCase();
+            const searchTanggal = searchTanggalInput.value;
+            const filteredData = allData.filter(item => {
+                const itemDate = item.timestamp ? item.timestamp.split('T')[0] : '';
+                const namaMatch = item.nama.toLowerCase().includes(searchNama);
+                const kelasMatch = item.kelas.toLowerCase().includes(searchKelas);
+                const tanggalMatch = !searchTanggal || itemDate === searchTanggal;
+                return namaMatch && kelasMatch && tanggalMatch;
+            });
+            renderData(filteredData);
+        };
+
+        const resetForm = () => {
+            form.reset();
+            document.getElementById('pelanggaranId').value = '';
+            formTitle.textContent = 'Tambah Data Pelanggaran';
+            submitBtn.querySelector('span').textContent = 'Simpan Data';
+            cancelBtn.classList.add('hidden');
+        };
+
+         window.viewHistory = (studentName) => {
+        const studentRecords = allData
+            .filter(item => item.nama.toLowerCase().trim() === studentName.toLowerCase().trim())
+            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        if (studentRecords.length === 0) return;
+        const latestClass = studentRecords[0].kelas;
+
+        const historyCardHtml = `
+            <div class="text-left p-4">
+                <div class="mb-4 p-2"><h2 class="text-2xl font-bold text-gray-800 dark:text-white">${studentName}</h2><p class="text-md text-gray-500 dark:text-gray-400">Kelas: ${latestClass} | Total Pelanggaran: ${studentRecords.length}</p></div>
+                <hr class="border-gray-200 dark:border-gray-700 mb-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[60vh] overflow-y-auto p-2">
+                    ${studentRecords.map(record => {
+                        const formattedDate = new Date(record.timestamp).toLocaleDateString('id-ID', {day:'2-digit', month:'short', year:'numeric'});
+                        // FIX: Menghapus backslash (\) yang salah
+                        return `<div class="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 flex flex-col h-full"><div class="flex justify-between items-start mb-2"><h4 class="font-bold text-md text-education-600 dark:text-education-400 pr-2">${record.jenis_pelanggaran}</h4><span class="text-xs font-mono text-gray-500 dark:text-gray-400 flex-shrink-0">${formattedDate}</span></div><p class="text-sm text-gray-600 dark:text-gray-300 flex-grow">${record.catatan}</p></div>`;
+                    }).join('')}
+                </div>
+            </div>`;
+
+        Swal.fire({
+            html: historyCardHtml,
+            width: '700px',
+            showCloseButton: true,
+            showConfirmButton: false,
+            padding: '1rem',
+            customClass: { popup: 'rounded-2xl shadow-2xl p-0 bg-white dark:bg-gray-900', htmlContainer: 'm-0', closeButton: 'text-gray-500 hover:text-red-500 dark:text-gray-400' }
+        });
+    };
+        window.editData = (id) => {
+            const item = allData.find(d => d.id === id);
+            if (!item) return;
+            document.getElementById('pelanggaranId').value = id;
+            document.getElementById('nama').value = item.nama;
+            document.getElementById('kelas').value = item.kelas;
+            document.getElementById('jenis_pelanggaran').value = item.jenis_pelanggaran;
+            document.getElementById('catatan').value = item.catatan;
+            formTitle.textContent = 'Update Data Pelanggaran';
+            submitBtn.querySelector('span').textContent = 'Update Data';
+            cancelBtn.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.deleteData = (id) => {
+            Swal.fire({
+                title: 'Konfirmasi Hapus Data',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ef4444',
+                confirmButtonText: 'Ya, Hapus!',
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        const response = await fetch(`/api/pelanggaran/delete/${id}`, { method: 'DELETE' });
+                        const resJson = await response.json();
+                        if (resJson.success) {
+                            Toast.fire({ icon: 'success', title: 'Data berhasil dihapus.' });
+                            fetchData();
+                        } else {
+                            Toast.fire({ icon: 'error', title: resJson.message });
+                        }
+                    } catch (error) {
+                        Toast.fire({ icon: 'error', title: 'Terjadi kesalahan.' });
+                    }
+                }
+            });
+        };
+
+        [searchNamaInput, searchKelasInput, searchTanggalInput].forEach(input => {
+            input.addEventListener('input', filterData);
+        });
+
+        cancelBtn.addEventListener('click', resetForm);
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('pelanggaranId').value;
+            const payload = {
+                nama: document.getElementById('nama').value,
+                kelas: document.getElementById('kelas').value,
+                jenis_pelanggaran: document.getElementById('jenis_pelanggaran').value,
+                catatan: document.getElementById('catatan').value,
+            };
+            const isUpdating = !!id;
+            const url = isUpdating ? `/api/pelanggaran/update/${id}` : '/api/pelanggaran/add';
+            const method = isUpdating ? 'PUT' : 'POST';
+
+            submitBtn.disabled = true;
+            try {
+                const response = await fetch(url, {
+                    method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                if (result.success) {
+                    Toast.fire({ icon: 'success', title: result.message });
+                    resetForm();
+                    fetchData();
+                } else {
+                    Toast.fire({ icon: 'error', title: result.message });
+                }
+            } catch (error) {
+                Toast.fire({ icon: 'error', title: 'Terjadi kesalahan.' });
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+
+        fetchData();
+    });
+    </script>
+</body>
+
+</html>

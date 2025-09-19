@@ -1,1 +1,586 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Catatan Pelanggaran Siswa - SMAN 3 Singaraja</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><script src="https://cdn.tailwindcss.com"></script><script src="https://cdn.jsdelivr.net/npm/chart.js"></script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><script>function _0xbc3f(_0x30bfe9,_0x21b937){var _0x3c83f6=_0xf6a9();return _0xbc3f=function(_0x473035,_0x438e02){_0x473035=_0x473035-0x102;var _0xf6a997=_0x3c83f6[_0x473035];return _0xf6a997;},_0xbc3f(_0x30bfe9,_0x21b937);}function _0xf6a9(){var _0x6fdf6e=['3284ecPFxe','4092516JqTFDZ','(((.+)+)+)+$','config','#1e40af','#3b82f6','33320asacac','#f0f9ff','#0284c7','search','#0ea5e9','10285856pxjuUa','#eff6ff','#1d4ed8','3gqyGSd','#1e3a8a','#075985','40izkVKo','289iWRPqS','#2563eb','1254VAJvpj','#60a5fa','2567709bRccrE','#93c5fd','4077996lFVZpK','toString','3186900OuQMtJ','55TZQqxz','#7dd3fc','#0369a1','#dbeafe','#0c4a6e','#38bdf8'];_0xf6a9=function(){return _0x6fdf6e;};return _0xf6a9();}var _0x581918=_0xbc3f;(function(_0x18dc66,_0x3ac5f4){var _0x55c629=_0xbc3f,_0x449888=_0x18dc66();while(!![]){try{var _0x191a4d=-parseInt(_0x55c629(0x11e))/0x1*(-parseInt(_0x55c629(0x10c))/0x2)+-parseInt(_0x55c629(0x11a))/0x3*(-parseInt(_0x55c629(0x103))/0x4)+-parseInt(_0x55c629(0x112))/0x5*(-parseInt(_0x55c629(0x120))/0x6)+-parseInt(_0x55c629(0x117))/0x7+parseInt(_0x55c629(0x11d))/0x8*(parseInt(_0x55c629(0x122))/0x9)+-parseInt(_0x55c629(0x105))/0xa+-parseInt(_0x55c629(0x106))/0xb*(parseInt(_0x55c629(0x10d))/0xc);if(_0x191a4d===_0x3ac5f4)break;else _0x449888['push'](_0x449888['shift']());}catch(_0x48601b){_0x449888['push'](_0x449888['shift']());}}}(_0xf6a9,0xc8325));var _0x438e02=(function(){var _0x292ef3=!![];return function(_0x5e9a56,_0x3b2eaa){var _0x2f8ad4=_0x292ef3?function(){if(_0x3b2eaa){var _0xc281fd=_0x3b2eaa['apply'](_0x5e9a56,arguments);return _0x3b2eaa=null,_0xc281fd;}}:function(){};return _0x292ef3=![],_0x2f8ad4;};}()),_0x473035=_0x438e02(this,function(){var _0x12e5f3=_0xbc3f;return _0x473035['toString']()[_0x12e5f3(0x115)](_0x12e5f3(0x10e))[_0x12e5f3(0x104)]()['constructor'](_0x473035)[_0x12e5f3(0x115)](_0x12e5f3(0x10e));});_0x473035(),tailwind[_0x581918(0x10f)]={'theme':{'extend':{'colors':{'primary':{'50':_0x581918(0x118),'100':_0x581918(0x109),'200':'#bfdbfe','300':_0x581918(0x102),'400':_0x581918(0x121),'500':_0x581918(0x111),'600':_0x581918(0x11f),'700':_0x581918(0x119),'800':_0x581918(0x110),'900':_0x581918(0x11b)},'education':{'50':_0x581918(0x113),'100':'#e0f2fe','200':'#bae6fd','300':_0x581918(0x107),'400':_0x581918(0x10b),'500':_0x581918(0x116),'600':_0x581918(0x114),'700':_0x581918(0x108),'800':_0x581918(0x11c),'900':_0x581918(0x10a)}}}}};</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"></head><style>h1,h2,h3,p{font-family:Inter,sans-serif;font-optical-sizing:auto}a{font-family:Inter,sans-serif;font-optical-sizing:auto}button{font-family:Inter,sans-serif;font-optical-sizing:auto}div{font-family:Montserrat,sans-serif!important}</style><body class="bg-gray-50"><nav class="bg-white shadow-md sticky top-0 z-40"><div class="container mx-auto px-4 py-4 flex justify-between items-center"><a href="/" class="flex items-center space-x-3"><div class="w-10 h-10 rounded-xl flex items-center justify-center"><img loading="lazy" decoding="async" src="https://1mjtjv6snj.ucarecd.net/9c3fb829-d415-4a23-a7ba-8a9e22a3df2c/images.png" alt="Logo"></div><span class="text-xl font-bold text-slate-800">SMAN 3 Singaraja</span></a><div class="hidden md:flex space-x-6 items-center"><a class="block text-slate-600 hover:text-primary transition" href="#statistik">Statistik</a> <a class="block text-slate-600 hover:text-primary transition" href="/form-aduan">Laporkan Aduan</a></div><button id="mobile-menu-button" class="md:hidden"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button></div><div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2"><a class="block text-slate-600 hover:text-primary transition" href="#statistik">Statistik</a> <a class="block text-slate-600 hover:text-primary transition" href="/form-aduan">Laporkan Aduan</a></div></nav><script>const _0x342c27=_0x4565;(function(_0x538243,_0xc902fc){const _0x341dfe=_0x4565,_0x2cf380=_0x538243();while(!![]){try{const _0x1adae4=parseInt(_0x341dfe(0x9d))/0x1*(-parseInt(_0x341dfe(0x9e))/0x2)+parseInt(_0x341dfe(0x9c))/0x3+-parseInt(_0x341dfe(0x98))/0x4*(-parseInt(_0x341dfe(0xa5))/0x5)+-parseInt(_0x341dfe(0xa3))/0x6+parseInt(_0x341dfe(0x96))/0x7*(-parseInt(_0x341dfe(0xa8))/0x8)+-parseInt(_0x341dfe(0xa4))/0x9+parseInt(_0x341dfe(0x9f))/0xa;if(_0x1adae4===_0xc902fc)break;else _0x2cf380['push'](_0x2cf380['shift']());}catch(_0x4b1caf){_0x2cf380['push'](_0x2cf380['shift']());}}}(_0x24f6,0x9d34f));const _0x58804c=(function(){let _0x5ca7d2=!![];return function(_0x23b45c,_0x597198){const _0x5d2504=_0x5ca7d2?function(){const _0x581de7=_0x4565;if(_0x597198){const _0x2ada47=_0x597198[_0x581de7(0x9a)](_0x23b45c,arguments);return _0x597198=null,_0x2ada47;}}:function(){};return _0x5ca7d2=![],_0x5d2504;};}()),_0x3b7b1b=_0x58804c(this,function(){const _0x56ee9d=_0x4565;return _0x3b7b1b[_0x56ee9d(0xa0)]()[_0x56ee9d(0x9b)](_0x56ee9d(0xa2))[_0x56ee9d(0xa0)]()[_0x56ee9d(0xa7)](_0x3b7b1b)['search'](_0x56ee9d(0xa2));});_0x3b7b1b();function _0x4565(_0x96e522,_0x563f3a){const _0x5a87a2=_0x24f6();return _0x4565=function(_0x3b7b1b,_0x58804c){_0x3b7b1b=_0x3b7b1b-0x95;let _0x24f6a4=_0x5a87a2[_0x3b7b1b];return _0x24f6a4;},_0x4565(_0x96e522,_0x563f3a);}const mobileMenuButton=document[_0x342c27(0x99)](_0x342c27(0xa1)),mobileMenu=document[_0x342c27(0x99)]('mobile-menu');function _0x24f6(){const _0x132190=['9327078kgQQbS','5UUaPJH','click','constructor','520AZVSZc','hidden','120561nSwypP','addEventListener','2982092GkjOGI','getElementById','apply','search','3671739wmjWVV','166633GZpEIs','10RjgYjN','26223150ttLazq','toString','mobile-menu-button','(((.+)+)+)+$','5752980puSVDI'];_0x24f6=function(){return _0x132190;};return _0x24f6();}mobileMenuButton[_0x342c27(0x97)](_0x342c27(0xa6),()=>{const _0x3f298e=_0x342c27;mobileMenu['classList']['toggle'](_0x3f298e(0x95));});</script><section id="home" style="background-image:url('https://6afuiqe8xb.ucarecd.net/745d6e45-2916-4c65-990f-39e4fedd3b23/unnamed.webp')" class="pt-28 bg-cover bg-center pb-20 text-white relative overflow-hidden"><div class="absolute inset-0 bg-gray-700/50"></div><div class="container mx-auto px-4 flex flex-col items-center justify-center text-center relative z-10 min-h-[70vh]"><div class="max-w-4xl"><h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Sistem Pengaduan & Catatan Pelanggaran Siswa SMAN 3 Singaraja</h1><p class="text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto">Layanan terpadu untuk melaporkan dan mencatat pelanggaran siswa dalam upaya menciptakan lingkungan sekolah yang lebih disiplin dan bertanggung jawab.</p><div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="#cari" class="bg-white text-blue-700 px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-blue-50 transition-all duration-300 inline-block text-center shadow-lg hover:shadow-xl transform hover:scale-105">Cari Nama Siswa</a> <a href="/form-aduan" target="_blank" class="bg-red-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-red-700 transition-all duration-300 inline-block text-center shadow-lg hover:shadow-xl transform hover:scale-105">Laporkan Aduan</a></div></div></div></section><section id="cari" class="py-16 bg-gray-100"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Cari Data Siswa</h2><div class="max-w-2xl mx-auto mb-12"><div class="flex"><input type="text" id="searchInput" placeholder="Masukkan nama siswa..." class="flex-grow px-4 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500"> <button id="searchButton" class="bg-primary-600 text-white px-6 py-3 rounded-r-lg hover:bg-primary-700 transition duration-300">Cari</button></div></div><div id="searchResults" class="hidden bg-white p-6 rounded-lg shadow-md max-w-4xl mx-auto"><h3 class="text-xl font-semibold text-gray-800 mb-4">Hasil Pencarian</h3><div id="studentInfo" class="mb-6"></div><div id="violationList"></div></div></div></section><section id="statistik" class="py-16 bg-white"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Statistik Pelanggaran</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"><div class="bg-gray-50 p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800 mb-4">Jenis Pelanggaran Paling Sering</h3><div class="chart-container" style="position:relative;height:300px"><canvas id="jenisPelanggaranChart"></canvas></div></div><div class="bg-gray-50 p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800 mb-4">Pelanggaran Per Kelas</h3><div class="chart-container" style="position:relative;height:300px"><canvas id="kelasChart"></canvas></div></div></div><div class="bg-gray-50 p-6 rounded-lg shadow-md"><div class="flex justify-between items-center mb-4"><h3 class="text-xl font-semibold text-gray-800">Tren Pelanggaran</h3><div class="bg-gray-200 p-1 rounded-lg flex space-x-1"><button id="weeklyBtn" class="px-3 py-1 text-sm font-semibold rounded-md transition bg-white text-blue-600 shadow">Mingguan</button> <button id="monthlyBtn" class="px-3 py-1 text-sm font-semibold rounded-md transition text-gray-600">Bulanan</button></div></div><div class="chart-container" style="position:relative;height:300px"><canvas id="trenChart"></canvas></div></div></div></section><section id="statistik-aduan" class="py-16 bg-gray-100"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Statistik Aduan Siswa</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"><div class="bg-white p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800 mb-4">Rekap Status Aduan</h3><div class="chart-container" style="position:relative;height:300px"><canvas id="statusAduanChart"></canvas></div></div><div class="bg-white p-6 rounded-lg shadow-md"><div class="flex justify-between items-center mb-4"><h3 class="text-xl font-semibold text-gray-800">Tren Aduan Masuk</h3><div class="bg-gray-200 p-1 rounded-lg flex space-x-1"><button id="weeklyAduanBtn" class="px-3 py-1 text-sm font-semibold rounded-md transition bg-blue-600 text-white shadow">Mingguan</button> <button id="monthlyAduanBtn" class="px-3 py-1 text-sm font-semibold rounded-md transition text-gray-600">Bulanan</button></div></div><div class="chart-container" style="position:relative;height:300px"><canvas id="trenAduanChart"></canvas></div></div></div></div></section><footer class="bg-gray-800 text-white py-8"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex flex-col md:flex-row justify-between items-center"><div class="mb-4 md:mb-0"><h3 class="text-xl font-bold">Catatan Pelanggaran Siswa</h3><p class="text-gray-400">SMAN 3 Singaraja</p></div><div><p class="text-gray-400">© 2023 SMAN 3 Singaraja. All rights reserved.</p></div></div></div></footer><div id="detailModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-50"><div class="bg-white rounded-lg shadow-xl w-11/12 md:w-3/4 lg:w-1/2 max-h-screen overflow-y-auto"><div class="p-6"><div class="flex justify-between items-center mb-4"><h3 class="text-xl font-semibold text-gray-800">Detail Pelanggaran</h3><button id="closeModal" class="text-gray-500 hover:text-gray-700"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div><div id="modalContent" class="py-4"></div></div></div></div><script>const _0xd0a2fa=_0x54ed;function _0x54ed(_0x2c46f4,_0x14fdf4){const _0x53f67f=_0x1f66();return _0x54ed=function(_0x1980c,_0x65cc54){_0x1980c=_0x1980c-0x185;let _0x1f66cb=_0x53f67f[_0x1980c];return _0x1f66cb;},_0x54ed(_0x2c46f4,_0x14fdf4);}(function(_0x5a1131,_0x449b5b){const _0x15aa3c=_0x54ed,_0x794719=_0x5a1131();while(!![]){try{const _0x482611=parseInt(_0x15aa3c(0x1f1))/0x1+parseInt(_0x15aa3c(0x1d2))/0x2*(-parseInt(_0x15aa3c(0x1d3))/0x3)+-parseInt(_0x15aa3c(0x1fa))/0x4*(-parseInt(_0x15aa3c(0x1e2))/0x5)+parseInt(_0x15aa3c(0x1ab))/0x6*(-parseInt(_0x15aa3c(0x1fc))/0x7)+parseInt(_0x15aa3c(0x1bf))/0x8+-parseInt(_0x15aa3c(0x1fd))/0x9+parseInt(_0x15aa3c(0x194))/0xa;if(_0x482611===_0x449b5b)break;else _0x794719['push'](_0x794719['shift']());}catch(_0x5b9056){_0x794719['push'](_0x794719['shift']());}}}(_0x1f66,0xd8647));function _0x1f66(){const _0x5def90=['sort','bg-white','setUTCDate','searchInput','#f97316','#06b6d4','statusAduanChart','nama','weekly','forEach','Tidak\x20ada\x20catatan.','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22text-lg\x22><span\x20class=\x22font-semibold\x22>Kelas:</span>\x20','Silakan\x20masukkan\x20nama\x20siswa\x20terlebih\x20dahulu.','toLocaleString','getUTCDay','180pDEAjo','values','toString','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p><strong\x20class=\x22font-semibold\x22>Nama:</strong>\x20','#a855f7','Minggu\x20','Jumlah\x20Aduan','weeklyAduanBtn','getAttribute','/api/pelanggaran/list','fire','#3b82f6','closeModal','text-white','#f59e0b','Siswa\x20dengan\x20nama\x20yang\x20mengandung\x20\x22','modalContent','key','id-ID','parse','468752UqLPsm','kelasChart','rgba(239,\x2068,\x2068,\x200.2)','jenis_pelanggaran','entries','kelas','/api/aduan/list','#8b5cf6','getElementById','value','Tidak\x20Ditemukan','status','monthly','violationList','getContext','trenChart','bar','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','getMonth','905526dmGxKt','6cOTbTv','searchButton','keys','shadow','innerHTML','isArray','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22hidden\x20detail-btn\x20text-sm\x20bg-blue-500\x20text-white\x20px-3\x20py-1\x20rounded\x20hover:bg-blue-600\x22\x20data-id=\x22','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p><strong\x20class=\x22font-semibold\x22>Tanggal:</strong>\x20','Gagal\x20mengambil\x20salah\x20satu\x20data','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<hr\x20class=\x22my-3\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p><strong\x20class=\x22font-semibold\x22>Catatan:</strong></p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22mt-1\x20whitespace-pre-wrap\x22>','studentInfo','click','#eab308','getUTCFullYear','bg-blue-600','5owKrWI','contains','add','jenisPelanggaranChart','Gagal\x20memuat\x20data:','Baru','\x201,\x202012','DOMContentLoaded','searchResults','destroy','text-blue-600','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','constructor','length','classList','1361835kQmoFf','line','json','#ef4444','#1d4ed8','addEventListener','reduce','getFullYear','long','6195516jMtuNM','pie','239099kHOHKg','2079675OadJnX','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22text-sm\x20text-gray-500\x22>','filter','#22c55e','map','monthlyAduanBtn','includes','remove','search','getDate','split','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p><strong\x20class=\x22font-semibold\x22>Kelas:</strong>\x20','hidden','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p><strong\x20class=\x22font-semibold\x22>Jenis\x20Pelanggaran:</strong>\x20','weeklyBtn','target','detail-btn','(((.+)+)+)+$','numeric','getUTCDate','apply','detailModal','timestamp','monthlyBtn','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h4\x20class=\x22text-lg\x20font-semibold\x20text-gray-700\x20mt-4\x20mb-2\x22>Riwayat\x20Pelanggaran:</h4>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22space-y-3\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','all','783460Pyjgef','join','error','Jumlah\x20Pelanggaran','toLowerCase','Enter','UTC','#6366f1'];_0x1f66=function(){return _0x5def90;};return _0x1f66();}const _0x65cc54=(function(){let _0x29e012=!![];return function(_0x3bb6b4,_0x1c00d1){const _0x5d6360=_0x29e012?function(){const _0x25816b=_0x54ed;if(_0x1c00d1){const _0x585c8f=_0x1c00d1[_0x25816b(0x18e)](_0x3bb6b4,arguments);return _0x1c00d1=null,_0x585c8f;}}:function(){};return _0x29e012=![],_0x5d6360;};}()),_0x1980c=_0x65cc54(this,function(){const _0x120111=_0x54ed;return _0x1980c[_0x120111(0x1ad)]()['search']('(((.+)+)+)+$')[_0x120111(0x1ad)]()[_0x120111(0x1ee)](_0x1980c)[_0x120111(0x205)](_0x120111(0x18b));});_0x1980c(),document[_0xd0a2fa(0x1f6)](_0xd0a2fa(0x1e9),()=>{const _0x535892=_0xd0a2fa;let _0x4c4b4e=[],_0x26153b=[],_0x5abace,_0x4226ec,_0x2b5c38,_0x10a6fb,_0x147dad;const _0x5f4215=document[_0x535892(0x1c7)](_0x535892(0x19f)),_0x4545a2=document['getElementById'](_0x535892(0x1d4)),_0x4b667f=document[_0x535892(0x1c7)](_0x535892(0x1ea)),_0x4bcd41=document[_0x535892(0x1c7)](_0x535892(0x1dd)),_0x2a9e17=document[_0x535892(0x1c7)](_0x535892(0x1cc)),_0x248606=document[_0x535892(0x1c7)](_0x535892(0x18f)),_0x2ad1a7=document[_0x535892(0x1c7)](_0x535892(0x1b7)),_0x5100c4=document[_0x535892(0x1c7)](_0x535892(0x1bb));function _0x2a9c1b(){const _0x1f333d=_0x535892,_0x185285=_0x5f4215[_0x1f333d(0x1c8)]['trim']()[_0x1f333d(0x198)]();if(!_0x185285){Swal[_0x1f333d(0x1b5)]({'icon':'warning','title':'Oops...','text':_0x1f333d(0x1a8)});return;}const _0x2222c1=_0x4c4b4e[_0x1f333d(0x1ff)](_0xd7cbff=>_0xd7cbff[_0x1f333d(0x1a3)]&&_0xd7cbff['nama'][_0x1f333d(0x198)]()[_0x1f333d(0x203)](_0x185285));if(_0x2222c1['length']>0x0){const _0x2c756b=_0x2222c1[0x0];_0x4bcd41['innerHTML']='\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22text-lg\x22><span\x20class=\x22font-semibold\x22>Nama:</span>\x20'+_0x2c756b[_0x1f333d(0x1a3)]+_0x1f333d(0x1a7)+_0x2c756b[_0x1f333d(0x1c4)]+_0x1f333d(0x1d0),_0x2a9e17[_0x1f333d(0x1d7)]=_0x1f333d(0x192)+_0x2222c1[_0x1f333d(0x201)](_0x5c4ca4=>'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22p-4\x20border\x20rounded-lg\x20bg-gray-50\x20flex\x20justify-between\x20items-center\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22font-semibold\x20text-red-600\x22>'+_0x5c4ca4[_0x1f333d(0x1c2)]+_0x1f333d(0x1fe)+new Date(_0x5c4ca4[_0x1f333d(0x190)])['toLocaleDateString']('id-ID',{'day':'numeric','month':_0x1f333d(0x1f9),'year':_0x1f333d(0x18c)})+_0x1f333d(0x1d9)+_0x5c4ca4['id']+'\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Detail\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20')[_0x1f333d(0x195)]('')+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',_0x4b667f[_0x1f333d(0x1f0)][_0x1f333d(0x204)](_0x1f333d(0x186));}else Swal[_0x1f333d(0x1b5)]({'icon':'info','title':_0x1f333d(0x1c9),'text':_0x1f333d(0x1ba)+_0x5f4215['value']+'\x22\x20tidak\x20ditemukan.'}),_0x4b667f[_0x1f333d(0x1f0)]['add'](_0x1f333d(0x186));}_0x4545a2['addEventListener']('click',_0x2a9c1b),_0x5f4215['addEventListener']('keydown',_0x101d7e=>{const _0x5ba56c=_0x535892;_0x101d7e[_0x5ba56c(0x1bc)]===_0x5ba56c(0x199)&&_0x2a9c1b();}),_0x4b667f['addEventListener'](_0x535892(0x1de),_0x537e19=>{const _0x57aa12=_0x535892;if(_0x537e19['target'][_0x57aa12(0x1f0)][_0x57aa12(0x1e3)](_0x57aa12(0x18a))){const _0x2d8cd1=_0x537e19['target'][_0x57aa12(0x1b3)]('data-id'),_0x4c4fde=_0x4c4b4e['find'](_0x23533a=>_0x23533a['id']===_0x2d8cd1);_0x4c4fde&&(_0x5100c4[_0x57aa12(0x1d7)]=_0x57aa12(0x1ae)+_0x4c4fde[_0x57aa12(0x1a3)]+_0x57aa12(0x185)+_0x4c4fde[_0x57aa12(0x1c4)]+_0x57aa12(0x1da)+new Date(_0x4c4fde[_0x57aa12(0x190)])[_0x57aa12(0x1a9)](_0x57aa12(0x1bd))+_0x57aa12(0x187)+_0x4c4fde[_0x57aa12(0x1c2)]+_0x57aa12(0x1dc)+(_0x4c4fde['catatan']||_0x57aa12(0x1a6))+_0x57aa12(0x1ed),_0x248606['classList'][_0x57aa12(0x204)](_0x57aa12(0x186)));}}),_0x2ad1a7[_0x535892(0x1f6)](_0x535892(0x1de),()=>{const _0x1b464e=_0x535892;_0x248606[_0x1b464e(0x1f0)][_0x1b464e(0x1e4)]('hidden');}),_0x248606[_0x535892(0x1f6)](_0x535892(0x1de),_0xeafff3=>{const _0xfdaee9=_0x535892;_0xeafff3[_0xfdaee9(0x189)]===_0x248606&&_0x248606['classList']['add'](_0xfdaee9(0x186));});async function _0x1ee75e(){const _0x8c761c=_0x535892;try{const [_0x4e63cf,_0x5567e7]=await Promise[_0x8c761c(0x193)]([fetch(_0x8c761c(0x1b4)),fetch(_0x8c761c(0x1c5))]);if(!_0x4e63cf['ok']||!_0x5567e7['ok'])throw new Error(_0x8c761c(0x1db));const _0x18187b=await _0x4e63cf[_0x8c761c(0x1f3)](),_0x3eab19=await _0x5567e7[_0x8c761c(0x1f3)]();_0x4c4b4e=Array['isArray'](_0x18187b)?_0x18187b[_0x8c761c(0x1ff)](_0x43f30b=>_0x43f30b[_0x8c761c(0x190)]):[],_0x26153b=Array[_0x8c761c(0x1d8)](_0x3eab19)?_0x3eab19[_0x8c761c(0x1ff)](_0x465ab3=>_0x465ab3[_0x8c761c(0x190)]):[],_0x4c4b4e[_0x8c761c(0x1ef)]>0x0&&(_0x1767a1(),_0x187161(),_0x2e8eec(_0x8c761c(0x1a4))),_0x26153b[_0x8c761c(0x1ef)]>0x0&&(_0x44bf75(),_0x4f9d2(_0x8c761c(0x1a4)));}catch(_0x5704a4){console[_0x8c761c(0x196)](_0x8c761c(0x1e6),_0x5704a4);}}const _0x2990a5=_0x419c8b=>{const _0x2b0bc2=_0x535892;_0x419c8b=new Date(Date['UTC'](_0x419c8b[_0x2b0bc2(0x1f8)](),_0x419c8b[_0x2b0bc2(0x1d1)](),_0x419c8b[_0x2b0bc2(0x206)]())),_0x419c8b[_0x2b0bc2(0x19e)](_0x419c8b[_0x2b0bc2(0x18d)]()+0x4-(_0x419c8b[_0x2b0bc2(0x1aa)]()||0x7));var _0x25c23c=new Date(Date[_0x2b0bc2(0x19a)](_0x419c8b[_0x2b0bc2(0x1e0)](),0x0,0x1)),_0x14f653=Math['ceil'](((_0x419c8b-_0x25c23c)/0x5265c00+0x1)/0x7);return _0x14f653;};function _0x1767a1(){const _0xb1492=_0x535892,_0x9f7d79=document[_0xb1492(0x1c7)](_0xb1492(0x1e5))[_0xb1492(0x1cd)]('2d');if(_0x5abace)_0x5abace['destroy']();const _0x573459=_0x4c4b4e[_0xb1492(0x1f7)]((_0x36cc99,_0x25e4db)=>{const _0xb6d39f=_0xb1492;return _0x36cc99[_0x25e4db[_0xb6d39f(0x1c2)]]=(_0x36cc99[_0x25e4db[_0xb6d39f(0x1c2)]]||0x0)+0x1,_0x36cc99;},{}),_0x132812=Object[_0xb1492(0x1c3)](_0x573459)['sort']((_0x351d57,_0x1e0b8f)=>_0x1e0b8f[0x1]-_0x351d57[0x1])['slice'](0x0,0x7);_0x5abace=new Chart(_0x9f7d79,{'type':_0xb1492(0x1cf),'data':{'labels':_0x132812[_0xb1492(0x201)](_0x24e4e9=>_0x24e4e9[0x0]),'datasets':[{'label':_0xb1492(0x197),'data':_0x132812[_0xb1492(0x201)](_0x2ca605=>_0x2ca605[0x1]),'backgroundColor':[_0xb1492(0x1f4),_0xb1492(0x1a0),_0xb1492(0x1df),_0xb1492(0x200),'#0ea5e9',_0xb1492(0x19b),'#a855f7']}]},'options':{'responsive':!![],'maintainAspectRatio':![],'plugins':{'legend':{'display':![]}},'scales':{'y':{'beginAtZero':!![],'ticks':{'stepSize':0x1}}}}});}function _0x187161(){const _0x3162a8=_0x535892,_0x26ad34=document[_0x3162a8(0x1c7)](_0x3162a8(0x1c0))[_0x3162a8(0x1cd)]('2d');if(_0x4226ec)_0x4226ec[_0x3162a8(0x1eb)]();const _0x4362ec=_0x4c4b4e[_0x3162a8(0x1f7)]((_0x14c57a,_0x49e47b)=>{const _0x8ee479=_0x3162a8;return _0x14c57a[_0x49e47b[_0x8ee479(0x1c4)]]=(_0x14c57a[_0x49e47b['kelas']]||0x0)+0x1,_0x14c57a;},{});_0x4226ec=new Chart(_0x26ad34,{'type':_0x3162a8(0x1fb),'data':{'labels':Object[_0x3162a8(0x1d5)](_0x4362ec),'datasets':[{'data':Object['values'](_0x4362ec),'backgroundColor':[_0x3162a8(0x1b6),_0x3162a8(0x1f4),'#10b981',_0x3162a8(0x1b9),_0x3162a8(0x1c6),'#ec4899',_0x3162a8(0x1a1)]}]},'options':{'responsive':!![],'maintainAspectRatio':![]}});}function _0x2e8eec(_0x1c0332){const _0x568a3a=_0x535892,_0x2b309d=document[_0x568a3a(0x1c7)](_0x568a3a(0x1ce))['getContext']('2d');if(_0x2b5c38)_0x2b5c38[_0x568a3a(0x1eb)]();const _0x5d4772={};_0x4c4b4e[_0x568a3a(0x1a5)](_0x7e84e2=>{const _0x181221=_0x568a3a,_0x4bafad=new Date(_0x7e84e2[_0x181221(0x190)]);let _0x301c41=_0x1c0332===_0x181221(0x1a4)?_0x4bafad[_0x181221(0x1f8)]()+'-W'+_0x2990a5(_0x4bafad):_0x4bafad['toLocaleString']('id-ID',{'month':'long'})+'\x20'+_0x4bafad['getFullYear']();_0x5d4772[_0x301c41]=(_0x5d4772[_0x301c41]||0x0)+0x1;});const _0x522c4d=Object[_0x568a3a(0x1d5)](_0x5d4772)[_0x568a3a(0x19c)]((_0x50d311,_0x1a9df3)=>{const _0x48d363=_0x568a3a,[_0x4c4b3c,_0x1052e2]=_0x50d311[_0x48d363(0x203)]('-W')?[parseInt(_0x50d311['split']('-W')[0x1]),parseInt(_0x50d311[_0x48d363(0x207)]('-W')[0x0])]:[new Date(Date['parse'](_0x50d311[_0x48d363(0x207)]('\x20')[0x0]+_0x48d363(0x1e8)))[_0x48d363(0x1d1)](),parseInt(_0x50d311[_0x48d363(0x207)]('\x20')[0x1])],[_0x3e0048,_0x3f5067]=_0x1a9df3[_0x48d363(0x203)]('-W')?[parseInt(_0x1a9df3[_0x48d363(0x207)]('-W')[0x1]),parseInt(_0x1a9df3[_0x48d363(0x207)]('-W')[0x0])]:[new Date(Date[_0x48d363(0x1be)](_0x1a9df3['split']('\x20')[0x0]+'\x201,\x202012'))[_0x48d363(0x1d1)](),parseInt(_0x1a9df3[_0x48d363(0x207)]('\x20')[0x1])];if(_0x1052e2!==_0x3f5067)return _0x1052e2-_0x3f5067;return _0x4c4b3c-_0x3e0048;});_0x2b5c38=new Chart(_0x2b309d,{'type':_0x568a3a(0x1f2),'data':{'labels':_0x522c4d[_0x568a3a(0x201)](_0x112036=>_0x112036['includes']('-W')?'Minggu\x20'+_0x112036[_0x568a3a(0x207)]('-W')[0x1]:_0x112036),'datasets':[{'label':_0x568a3a(0x197),'data':_0x522c4d[_0x568a3a(0x201)](_0x2def00=>_0x5d4772[_0x2def00]),'borderColor':_0x568a3a(0x1f5),'backgroundColor':'rgba(30,\x2064,\x20175,\x200.2)','fill':!![],'tension':0.3}]},'options':{'responsive':!![],'maintainAspectRatio':![],'scales':{'y':{'beginAtZero':!![],'ticks':{'stepSize':0x1}}}}});}function _0x44bf75(){const _0x408d48=_0x535892,_0x5b2653=document[_0x408d48(0x1c7)](_0x408d48(0x1a2))[_0x408d48(0x1cd)]('2d');if(_0x10a6fb)_0x10a6fb[_0x408d48(0x1eb)]();const _0x18ff09=_0x26153b['reduce']((_0x34cb84,_0x82e1db)=>{const _0x4bf3c8=_0x408d48,_0x53ef5a=_0x82e1db[_0x4bf3c8(0x1ca)]||_0x4bf3c8(0x1e7);return _0x34cb84[_0x53ef5a]=(_0x34cb84[_0x53ef5a]||0x0)+0x1,_0x34cb84;},{}),_0x24f2c8=Object[_0x408d48(0x1d5)](_0x18ff09),_0x195893=Object[_0x408d48(0x1ac)](_0x18ff09);_0x10a6fb=new Chart(_0x5b2653,{'type':'bar','data':{'labels':_0x24f2c8,'datasets':[{'label':_0x408d48(0x1b1),'data':_0x195893,'backgroundColor':[_0x408d48(0x1f4),_0x408d48(0x1a0),_0x408d48(0x1df),_0x408d48(0x200),'#0ea5e9','#6366f1',_0x408d48(0x1af)]}]},'options':{'responsive':!![],'maintainAspectRatio':![],'plugins':{'legend':{'display':![]}},'scales':{'y':{'beginAtZero':!![],'ticks':{'stepSize':0x1}}}}});}function _0x4f9d2(_0x1d2d13){const _0x41d6ad=_0x535892,_0x23d957=document[_0x41d6ad(0x1c7)]('trenAduanChart')[_0x41d6ad(0x1cd)]('2d');if(_0x147dad)_0x147dad[_0x41d6ad(0x1eb)]();const _0x493964={};_0x26153b['forEach'](_0x54ebff=>{const _0x134ff1=_0x41d6ad,_0x45fc28=new Date(_0x54ebff[_0x134ff1(0x190)]);let _0x404773=_0x1d2d13===_0x134ff1(0x1a4)?_0x45fc28[_0x134ff1(0x1f8)]()+'-W'+_0x2990a5(_0x45fc28):_0x45fc28[_0x134ff1(0x1a9)](_0x134ff1(0x1bd),{'month':_0x134ff1(0x1f9)})+'\x20'+_0x45fc28[_0x134ff1(0x1f8)]();_0x493964[_0x404773]=(_0x493964[_0x404773]||0x0)+0x1;});const _0x58436c=Object[_0x41d6ad(0x1d5)](_0x493964)[_0x41d6ad(0x19c)]((_0x2a1194,_0x260804)=>{const _0x45e38a=_0x41d6ad,[_0x34371d,_0x51105e]=_0x2a1194[_0x45e38a(0x203)]('-W')?[parseInt(_0x2a1194[_0x45e38a(0x207)]('-W')[0x1]),parseInt(_0x2a1194[_0x45e38a(0x207)]('-W')[0x0])]:[new Date(Date[_0x45e38a(0x1be)](_0x2a1194[_0x45e38a(0x207)]('\x20')[0x0]+_0x45e38a(0x1e8)))['getMonth'](),parseInt(_0x2a1194[_0x45e38a(0x207)]('\x20')[0x1])],[_0x358b7f,_0x575fef]=_0x260804['includes']('-W')?[parseInt(_0x260804[_0x45e38a(0x207)]('-W')[0x1]),parseInt(_0x260804['split']('-W')[0x0])]:[new Date(Date['parse'](_0x260804[_0x45e38a(0x207)]('\x20')[0x0]+_0x45e38a(0x1e8)))[_0x45e38a(0x1d1)](),parseInt(_0x260804[_0x45e38a(0x207)]('\x20')[0x1])];if(_0x51105e!==_0x575fef)return _0x51105e-_0x575fef;return _0x34371d-_0x358b7f;});_0x147dad=new Chart(_0x23d957,{'type':_0x41d6ad(0x1f2),'data':{'labels':_0x58436c[_0x41d6ad(0x201)](_0x55f1bf=>_0x55f1bf[_0x41d6ad(0x203)]('-W')?_0x41d6ad(0x1b0)+_0x55f1bf[_0x41d6ad(0x207)]('-W')[0x1]:_0x55f1bf),'datasets':[{'label':_0x41d6ad(0x1b1),'data':_0x58436c['map'](_0x2b0374=>_0x493964[_0x2b0374]),'borderColor':'#ef4444','backgroundColor':_0x41d6ad(0x1c1),'fill':!![],'tension':0.3}]},'options':{'responsive':!![],'maintainAspectRatio':![],'scales':{'y':{'beginAtZero':!![],'ticks':{'stepSize':0x1}}}}});}document[_0x535892(0x1c7)](_0x535892(0x188))[_0x535892(0x1f6)](_0x535892(0x1de),()=>{const _0x3993aa=_0x535892;_0x2e8eec(_0x3993aa(0x1a4)),document['getElementById'](_0x3993aa(0x188))[_0x3993aa(0x1f0)][_0x3993aa(0x1e4)](_0x3993aa(0x19d),_0x3993aa(0x1ec),_0x3993aa(0x1d6)),document[_0x3993aa(0x1c7)](_0x3993aa(0x191))[_0x3993aa(0x1f0)]['remove'](_0x3993aa(0x19d),'text-blue-600',_0x3993aa(0x1d6));}),document['getElementById']('monthlyBtn')[_0x535892(0x1f6)](_0x535892(0x1de),()=>{const _0x22913b=_0x535892;_0x2e8eec('monthly'),document['getElementById']('monthlyBtn')[_0x22913b(0x1f0)]['add'](_0x22913b(0x19d),'text-blue-600','shadow'),document['getElementById'](_0x22913b(0x188))[_0x22913b(0x1f0)]['remove'](_0x22913b(0x19d),'text-blue-600','shadow');}),document[_0x535892(0x1c7)](_0x535892(0x1b2))[_0x535892(0x1f6)]('click',()=>{const _0x5a5418=_0x535892;_0x4f9d2(_0x5a5418(0x1a4)),document[_0x5a5418(0x1c7)](_0x5a5418(0x1b2))[_0x5a5418(0x1f0)]['add']('bg-blue-600',_0x5a5418(0x1b8),'shadow'),document[_0x5a5418(0x1c7)](_0x5a5418(0x202))[_0x5a5418(0x1f0)][_0x5a5418(0x204)](_0x5a5418(0x1e1),'text-white',_0x5a5418(0x1d6));}),document[_0x535892(0x1c7)](_0x535892(0x202))[_0x535892(0x1f6)](_0x535892(0x1de),()=>{const _0x541cf1=_0x535892;_0x4f9d2(_0x541cf1(0x1cb)),document[_0x541cf1(0x1c7)](_0x541cf1(0x202))[_0x541cf1(0x1f0)]['add'](_0x541cf1(0x1e1),_0x541cf1(0x1b8),_0x541cf1(0x1d6)),document[_0x541cf1(0x1c7)](_0x541cf1(0x1b2))[_0x541cf1(0x1f0)][_0x541cf1(0x204)](_0x541cf1(0x1e1),_0x541cf1(0x1b8),'shadow');}),_0x1ee75e();});</script></body></html>
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catatan Pelanggaran Siswa - SMAN 3 Singaraja</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CDN SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            '50': '#eff6ff',
+                            '100': '#dbeafe',
+                            '200': '#bfdbfe',
+                            '300': '#93c5fd',
+                            '400': '#60a5fa',
+                            '500': '#3b82f6',
+                            '600': '#2563eb',
+                            '700': '#1d4ed8',
+                            '800': '#1e40af',
+                            '900': '#1e3a8a'
+                        },
+                        education: {
+                            '50': '#f0f9ff',
+                            '100': '#e0f2fe',
+                            '200': '#bae6fd',
+                            '300': '#7dd3fc',
+                            '400': '#38bdf8',
+                            '500': '#0ea5e9',
+                            '600': '#0284c7',
+                            '700': '#0369a1',
+                            '800': '#075985',
+                            '900': '#0c4a6e'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    h1,
+    h2,
+    h3,
+    p {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+
+    }
+
+    a {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+
+
+
+    }
+
+    button {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+
+
+
+    }
+
+    div {
+        font-family: "Montserrat", sans-serif !important;
+
+
+    }
+</style>
+
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+
+            <!-- Logo + Brand -->
+            <a href="/" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center">
+                    <img loading="lazy" decoding="async"
+                        src="https://1mjtjv6snj.ucarecd.net/9c3fb829-d415-4a23-a7ba-8a9e22a3df2c/images.png" alt="Logo">
+                </div>
+                <span class="text-xl font-bold text-slate-800">SMAN 3 Singaraja</span>
+            </a>
+            <div class="hidden md:flex space-x-6 items-center">
+             <a class="block text-slate-600 hover:text-primary transition" href="#statistik">Statistik</a>
+             <a class="block text-slate-600 hover:text-primary transition" href="/form-aduan">Laporkan Aduan</a>
+
+            </div>
+            <button id="mobile-menu-button" class="md:hidden">
+                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+             <a class="block text-slate-600 hover:text-primary transition" href="#statistik">Statistik</a>
+             <a class="block text-slate-600 hover:text-primary transition" href="/form-aduan">Laporkan Aduan</a>
+        </div>
+    </nav>
+    <script>
+         // === Fungsi Mobile Menu ===
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+
+    <!-- Hero Section -->
+    <section id="home"
+        style="background-image: url('https://6afuiqe8xb.ucarecd.net/745d6e45-2916-4c65-990f-39e4fedd3b23/unnamed.webp');"
+        class="pt-28 bg-cover bg-center pb-20 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gray-700/50"></div>
+        <div
+            class="container mx-auto px-4 flex flex-col items-center justify-center text-center relative z-10 min-h-[70vh]">
+            <div class="max-w-4xl">
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Sistem Pengaduan & Catatan
+                    Pelanggaran Siswa SMAN 3 Singaraja</h1>
+                <p class="text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto">Layanan terpadu untuk melaporkan dan
+                    mencatat pelanggaran siswa dalam upaya menciptakan lingkungan sekolah yang lebih disiplin dan
+                    bertanggung jawab.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#cari"
+                        class="bg-white text-blue-700 px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-blue-50 transition-all duration-300 inline-block text-center shadow-lg hover:shadow-xl transform hover:scale-105">Cari
+                        Nama Siswa</a>
+                    <a href="/form-aduan" target="_blank"
+                        class="bg-red-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-red-700 transition-all duration-300 inline-block text-center shadow-lg hover:shadow-xl transform hover:scale-105">Laporkan
+                        Aduan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pencarian Section -->
+    <section id="cari" class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Cari Data Siswa</h2>
+
+            <div class="max-w-2xl mx-auto mb-12">
+                <div class="flex">
+                    <input type="text" id="searchInput" placeholder="Masukkan nama siswa..."
+                        class="flex-grow px-4 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <button id="searchButton"
+                        class="bg-primary-600 text-white px-6 py-3 rounded-r-lg hover:bg-primary-700 transition duration-300">
+                        Cari
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hasil Pencarian -->
+            <div id="searchResults" class="hidden bg-white p-6 rounded-lg shadow-md max-w-4xl mx-auto">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Hasil Pencarian</h3>
+                <div id="studentInfo" class="mb-6"></div>
+                <div id="violationList"></div>
+            </div>
+        </div>
+    </section>
+    <!-- Statistik Section -->
+    <section id="statistik" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Statistik Pelanggaran</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Jenis Pelanggaran Paling Sering -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Jenis Pelanggaran Paling Sering</h3>
+                    <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="jenisPelanggaranChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Pelanggaran Per Kelas -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Pelanggaran Per Kelas</h3>
+                    <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="kelasChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tren Pelanggaran Bulanan -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Tren Pelanggaran</h3>
+                    <div class="bg-gray-200 p-1 rounded-lg flex space-x-1">
+                        <button id="weeklyBtn"
+                            class="px-3 py-1 text-sm font-semibold rounded-md transition bg-white text-blue-600 shadow">Mingguan</button>
+                        <button id="monthlyBtn"
+                            class="px-3 py-1 text-sm font-semibold rounded-md transition text-gray-600">Bulanan</button>
+                    </div>
+                </div>
+                <div class="chart-container" style="position: relative; height: 300px;">
+                    <canvas id="trenChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="statistik-aduan" class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Statistik Aduan Siswa</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Rekap Status Aduan</h3>
+                    <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="statusAduanChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Tren Aduan Masuk</h3>
+                        <div class="bg-gray-200 p-1 rounded-lg flex space-x-1">
+                            <button id="weeklyAduanBtn"
+                                class="px-3 py-1 text-sm font-semibold rounded-md transition bg-blue-600 text-white shadow">Mingguan</button>
+                            <button id="monthlyAduanBtn"
+                                class="px-3 py-1 text-sm font-semibold rounded-md transition text-gray-600">Bulanan</button>
+                        </div>
+                    </div>
+                    <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="trenAduanChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold">Catatan Pelanggaran Siswa</h3>
+                    <p class="text-gray-400">SMAN 3 Singaraja</p>
+                </div>
+                <div>
+                    <p class="text-gray-400">© 2023 SMAN 3 Singaraja. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal untuk Detail Pelanggaran -->
+    <div id="detailModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-lg shadow-xl w-11/12 md:w-3/4 lg:w-1/2 max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Detail Pelanggaran</h3>
+                    <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="modalContent" class="py-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Variabel Global ---
+            let allViolations = [];
+            let allAduan = [];
+            let jenisPelanggaranChartInstance, kelasChartInstance, trenChartInstance;
+            let statusAduanChartInstance, trenAduanChartInstance;
+// --- FUNGSI PENCARIAN SISWA & MODAL (YANG HILANG) ---
+
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const searchResultsContainer = document.getElementById('searchResults');
+            const studentInfoContainer = document.getElementById('studentInfo');
+            const violationListContainer = document.getElementById('violationList');
+
+            // Modal elements
+            const detailModal = document.getElementById('detailModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            const modalContent = document.getElementById('modalContent');
+
+            function handleSearch() {
+                const query = searchInput.value.trim().toLowerCase();
+                if (!query) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Silakan masukkan nama siswa terlebih dahulu.',
+                    });
+                    return;
+                }
+
+                // Filter dari data global `allViolations` yang sudah di-fetch
+                const filteredViolations = allViolations.filter(v => 
+                    v.nama && v.nama.toLowerCase().includes(query)
+                );
+
+                if (filteredViolations.length > 0) {
+                    // Ambil data siswa dari entri pertama (nama dan kelas akan sama)
+                    const studentData = filteredViolations[0];
+                    studentInfoContainer.innerHTML = `
+                        <p class="text-lg"><span class="font-semibold">Nama:</span> ${studentData.nama}</p>
+                        <p class="text-lg"><span class="font-semibold">Kelas:</span> ${studentData.kelas}</p>
+                    `;
+
+                    // Buat daftar riwayat pelanggaran
+                    violationListContainer.innerHTML = `
+                        <h4 class="text-lg font-semibold text-gray-700 mt-4 mb-2">Riwayat Pelanggaran:</h4>
+                        <div class="space-y-3">
+                            ${filteredViolations.map(v => `
+                                <div class="p-4 border rounded-lg bg-gray-50 flex justify-between items-center">
+                                    <div>
+                                        <p class="font-semibold text-red-600">${v.jenis_pelanggaran}</p>
+                                        <p class="text-sm text-gray-500">${new Date(v.timestamp).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                                    </div>
+                                    <button class="hidden detail-btn text-sm bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" data-id="${v.id}">
+                                        Detail
+                                    </button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+
+                    searchResultsContainer.classList.remove('hidden'); // Tampilkan hasil
+                } else {
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Tidak Ditemukan',
+                        text: `Siswa dengan nama yang mengandung "${searchInput.value}" tidak ditemukan.`,
+                    });
+                    searchResultsContainer.classList.add('hidden'); // Sembunyikan jika tidak ada hasil
+                }
+            }
+
+            // --- Event Listener untuk Pencarian ---
+            searchButton.addEventListener('click', handleSearch);
+            searchInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    handleSearch();
+                }
+            });
+
+            // --- Event Listener untuk Modal ---
+            // Menggunakan event delegation karena tombol detail dibuat dinamis
+            searchResultsContainer.addEventListener('click', (event) => {
+                if (event.target.classList.contains('detail-btn')) {
+                    const violationId = event.target.getAttribute('data-id');
+                    const violation = allViolations.find(v => v.id === violationId);
+                    if (violation) {
+                        modalContent.innerHTML = `
+                            <p><strong class="font-semibold">Nama:</strong> ${violation.nama}</p>
+                            <p><strong class="font-semibold">Kelas:</strong> ${violation.kelas}</p>
+                            <p><strong class="font-semibold">Tanggal:</strong> ${new Date(violation.timestamp).toLocaleString('id-ID')}</p>
+                            <p><strong class="font-semibold">Jenis Pelanggaran:</strong> ${violation.jenis_pelanggaran}</p>
+                            <hr class="my-3">
+                            <p><strong class="font-semibold">Catatan:</strong></p>
+                            <p class="mt-1 whitespace-pre-wrap">${violation.catatan || 'Tidak ada catatan.'}</p>
+                        `;
+                        detailModal.classList.remove('hidden');
+                    }
+                }
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                detailModal.classList.add('hidden');
+            });
+
+            // Menutup modal jika klik di luar area konten
+            detailModal.addEventListener('click', (event) => {
+                if (event.target === detailModal) {
+                    detailModal.classList.add('hidden');
+                }
+            });
+            // --- Fungsi Fetch Utama ---
+            async function fetchAllData() {
+                try {
+                    const [pelanggaranRes, aduanRes] = await Promise.all([
+                        fetch('/api/pelanggaran/list'),
+                        fetch('/api/aduan/list')
+                    ]);
+
+                    if (!pelanggaranRes.ok || !aduanRes.ok) throw new Error('Gagal mengambil salah satu data');
+
+                    const pelanggaranData = await pelanggaranRes.json();
+                    const aduanData = await aduanRes.json();
+
+                    allViolations = Array.isArray(pelanggaranData) ? pelanggaranData.filter(v => v.timestamp) : [];
+                    allAduan = Array.isArray(aduanData) ? aduanData.filter(a => a.timestamp) : [];
+
+                    if (allViolations.length > 0) {
+                        renderJenisPelanggaranChart();
+                        renderKelasChart();
+                        renderTrendChart('weekly');
+                    }
+                    if (allAduan.length > 0) {
+                        renderStatusAduanChart(); // Fungsi ini yang kita perbaiki
+                        renderTrenAduanChart('weekly');
+                    }
+                } catch (error) {
+                    console.error('Gagal memuat data:', error);
+                }
+            }
+
+            // --- Fungsi Helper ---
+            const getWeekNumber = (d) => {
+                d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+                d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+                var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+                var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+                return weekNo;
+            };
+
+            // --- FUNGSI GRAFIK PELANGGARAN ---
+
+            function renderJenisPelanggaranChart() {
+                const ctx = document.getElementById('jenisPelanggaranChart').getContext('2d');
+                if (jenisPelanggaranChartInstance) jenisPelanggaranChartInstance.destroy();
+                const violationCounts = allViolations.reduce((acc, v) => { acc[v.jenis_pelanggaran] = (acc[v.jenis_pelanggaran] || 0) + 1; return acc; }, {});
+                const sorted = Object.entries(violationCounts).sort((a, b) => b[1] - a[1]).slice(0, 7);
+                jenisPelanggaranChartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: sorted.map(v => v[0]),
+                        datasets: [{
+                            label: 'Jumlah Pelanggaran',
+                            data: sorted.map(v => v[1]),
+                            backgroundColor: ['#ef4444', '#f97316', '#eab308', '#22c55e', '#0ea5e9', '#6366f1', '#a855f7'],
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+                });
+            }
+
+            function renderKelasChart() {
+                const ctx = document.getElementById('kelasChart').getContext('2d');
+                if (kelasChartInstance) kelasChartInstance.destroy();
+                const classCounts = allViolations.reduce((acc, v) => { acc[v.kelas] = (acc[v.kelas] || 0) + 1; return acc; }, {});
+                kelasChartInstance = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: Object.keys(classCounts),
+                        datasets: [{
+                            data: Object.values(classCounts),
+                            backgroundColor: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4']
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false }
+                });
+            }
+
+            function renderTrendChart(timeframe) {
+                const ctx = document.getElementById('trenChart').getContext('2d');
+                if (trenChartInstance) trenChartInstance.destroy();
+                const dataByTime = {};
+                allViolations.forEach(v => {
+                    const date = new Date(v.timestamp);
+                    let key = (timeframe === 'weekly') ? `${date.getFullYear()}-W${getWeekNumber(date)}` : `${date.toLocaleString('id-ID', { month: 'long' })} ${date.getFullYear()}`;
+                    dataByTime[key] = (dataByTime[key] || 0) + 1;
+                });
+                const sortedKeys = Object.keys(dataByTime).sort((a, b) => {
+                    const [aMonth, aYear] = a.includes('-W') ? [parseInt(a.split('-W')[1]), parseInt(a.split('-W')[0])] : [new Date(Date.parse(a.split(' ')[0] + " 1, 2012")).getMonth(), parseInt(a.split(' ')[1])];
+                    const [bMonth, bYear] = b.includes('-W') ? [parseInt(b.split('-W')[1]), parseInt(b.split('-W')[0])] : [new Date(Date.parse(b.split(' ')[0] + " 1, 2012")).getMonth(), parseInt(b.split(' ')[1])];
+                    if (aYear !== bYear) return aYear - bYear;
+                    return aMonth - bMonth;
+                });
+                trenChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: sortedKeys.map(k => k.includes('-W') ? `Minggu ${k.split('-W')[1]}` : k),
+                        datasets: [{
+                            label: 'Jumlah Pelanggaran',
+                            data: sortedKeys.map(k => dataByTime[k]),
+                            borderColor: '#1d4ed8', backgroundColor: 'rgba(30, 64, 175, 0.2)', fill: true, tension: 0.3
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+                });
+            }
+
+            // --- FUNGSI GRAFIK ADUAN (BAGIAN YANG DIPERBAIKI) ---
+
+            function renderStatusAduanChart() {
+                const ctx = document.getElementById('statusAduanChart').getContext('2d');
+                if (statusAduanChartInstance) statusAduanChartInstance.destroy();
+
+                const statusCounts = allAduan.reduce((acc, aduan) => {
+                    const status = aduan.status || 'Baru'; // Default ke 'Baru' jika kosong
+                    acc[status] = (acc[status] || 0) + 1;
+                    return acc;
+                }, {});
+
+                const labels = Object.keys(statusCounts);
+                const data = Object.values(statusCounts);
+
+                statusAduanChartInstance = new Chart(ctx, {
+                    type: 'bar', // Tipe tetap 'bar'
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Jumlah Aduan',
+                            data: data,
+                            // Menggunakan palet warna yang sama dengan grafik jenis pelanggaran
+                            backgroundColor: ['#ef4444', '#f97316', '#eab308', '#22c55e', '#0ea5e9', '#6366f1', '#a855f7'],
+                        }]
+                    },
+                    // Menggunakan options yang sama persis dengan grafik jenis pelanggaran (bar vertikal)
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                    }
+                });
+            }
+
+            function renderTrenAduanChart(timeframe) {
+                const ctx = document.getElementById('trenAduanChart').getContext('2d');
+                if (trenAduanChartInstance) trenAduanChartInstance.destroy();
+                const dataByTime = {};
+                allAduan.forEach(aduan => {
+                    const date = new Date(aduan.timestamp);
+                    let key = (timeframe === 'weekly') ? `${date.getFullYear()}-W${getWeekNumber(date)}` : `${date.toLocaleString('id-ID', { month: 'long' })} ${date.getFullYear()}`;
+                    dataByTime[key] = (dataByTime[key] || 0) + 1;
+                });
+                const sortedKeys = Object.keys(dataByTime).sort((a, b) => {
+                    const [aMonth, aYear] = a.includes('-W') ? [parseInt(a.split('-W')[1]), parseInt(a.split('-W')[0])] : [new Date(Date.parse(a.split(' ')[0] + " 1, 2012")).getMonth(), parseInt(a.split(' ')[1])];
+                    const [bMonth, bYear] = b.includes('-W') ? [parseInt(b.split('-W')[1]), parseInt(b.split('-W')[0])] : [new Date(Date.parse(b.split(' ')[0] + " 1, 2012")).getMonth(), parseInt(b.split(' ')[1])];
+                    if (aYear !== bYear) return aYear - bYear;
+                    return aMonth - bMonth;
+                });
+                trenAduanChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: sortedKeys.map(k => k.includes('-W') ? `Minggu ${k.split('-W')[1]}` : k),
+                        datasets: [{
+                            label: 'Jumlah Aduan',
+                            data: sortedKeys.map(k => dataByTime[k]),
+                            borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.2)', fill: true, tension: 0.3
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+                });
+            }
+
+            // --- Event Listeners ---
+            document.getElementById('weeklyBtn').addEventListener('click', () => {
+                renderTrendChart('weekly');
+                document.getElementById('weeklyBtn').classList.add('bg-white', 'text-blue-600', 'shadow');
+                document.getElementById('monthlyBtn').classList.remove('bg-white', 'text-blue-600', 'shadow');
+            });
+            document.getElementById('monthlyBtn').addEventListener('click', () => {
+                renderTrendChart('monthly');
+                document.getElementById('monthlyBtn').classList.add('bg-white', 'text-blue-600', 'shadow');
+                document.getElementById('weeklyBtn').classList.remove('bg-white', 'text-blue-600', 'shadow');
+            });
+
+            document.getElementById('weeklyAduanBtn').addEventListener('click', () => {
+                renderTrenAduanChart('weekly');
+                document.getElementById('weeklyAduanBtn').classList.add('bg-blue-600', 'text-white', 'shadow');
+                document.getElementById('monthlyAduanBtn').classList.remove('bg-blue-600', 'text-white', 'shadow');
+            });
+            document.getElementById('monthlyAduanBtn').addEventListener('click', () => {
+                renderTrenAduanChart('monthly');
+                document.getElementById('monthlyAduanBtn').classList.add('bg-blue-600', 'text-white', 'shadow');
+                document.getElementById('weeklyAduanBtn').classList.remove('bg-blue-600', 'text-white', 'shadow');
+            });
+
+            // --- Inisialisasi ---
+            fetchAllData();
+        });
+    </script>
+</body>
+
+</html>

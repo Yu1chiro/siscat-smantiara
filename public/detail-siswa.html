@@ -1,1 +1,295 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Detail Laporan Siswa</title><script src="https://cdn.tailwindcss.com"></script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><style>h1,h2,p{font-family:'Times New Roman',Times,serif!important}@media print{.no-print{display:none!important}}</style></head><body class="bg-slate-100 dark:bg-gray-900 flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8"><div id="report-container" class="w-full max-w-4xl mx-auto"><div id="student-report-card" class="bg-white rounded-2xl shadow-xl p-8 sm:p-12 border border-gray-200"><header class="border-b-2 border-blue-600 pb-6 mb-8"><div class="flex items-center justify-between"><div class="flex-shrink-0"><img loading="eager" src="https://6afuiqe8xb.ucarecd.net/fe2f3158-731a-42f2-803f-d3f5900f279e/b64d89d6d944d1bbd1df38f14f66634a.png" class="w-20 h-20 object-contain" alt="Tut wuri handayani"></div><div class="text-center flex-grow mx-4"><h1 class="text-3xl font-bold text-blue-800 tracking-wide mb-1">SMAN 3 SINGARAJA</h1><p class="text-sm text-gray-600 mb-1">Jalan Pulau Natuna, Kel. Penarukan Singaraja</p><p class="text-sm text-gray-600">Telp: (0362) 123456 | Email: info@sman3singaraja.sch.id</p></div><div class="flex-shrink-0 w-20"><img loading="eager" src="https://1mjtjv6snj.ucarecd.net/9c3fb829-d415-4a23-a7ba-8a9e22a3df2c/images.png" class="w-20 h-20 object-contain" alt="Logo SMAN 3 Singaraja"></div></div><div class="text-center mt-6"><div class="inline-block"><h2 class="text-2xl font-semibold text-red-600 uppercase tracking-wide">Laporan Catatan Pelanggaran Siswa</h2><div class="h-1 bg-red-600 mt-2 rounded"></div></div></div></header><section id="student-info" class="mb-10 bg-slate-50 p-6 rounded-lg"><div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4"><div><p class="text-sm font-semibold text-gray-500">Nama Lengkap Siswa</p><p id="nama-siswa" class="text-lg text-gray-900">Memuat data...</p></div><div><p class="text-sm font-semibold text-gray-500">Kelas</p><p id="kelas-siswa" class="text-lg text-gray-900">-</p></div><div><p class="text-sm font-semibold text-gray-500">Total Pelanggaran</p><p id="total-pelanggaran" class="text-lg text-red-500">- Kasus</p></div><div><p class="text-sm font-semibold text-gray-500">Tanggal Laporan</p><p id="tanggal-laporan" class="text-lg text-gray-900">-</p></div></div></section><section><h3 class="text-xl font-bold mb-6 pb-2 border-b-2 border-gray-200 text-gray-800">Rincian Pelanggaran Siswa</h3><div id="history-list" class="space-y-5"><p id="loading-text" class="text-center text-gray-500">Memuat riwayat...</p></div></section><footer class="mt-16 pt-10 flex justify-between text-center text-sm text-gray-800"><div class="w-1/2"><p class="font-semibold">Mengetahui,</p><p class="font-semibold">Kesiswaan</p><p class="mb-20">&nbsp;</p><p class="font-bold pt-2 mb-3">Dyah Puspa Shinta P,S.S.,M.Pd.</p><p class="text-sm text-gray-600">NIP. 198206072009022007</p></div><div class="w-1/2"><p class="font-semibold">Peserta Didik</p><p class="mb-20">&nbsp;</p><p id="nama-siswa-td" class="font-bold pt-2 mb-3"></p><p class="text-sm text-gray-600">Kelas <span class="text-sm text-gray-600" id="kelas-siswa-td"></span></p></div></footer></div><div class="fixed top-6 right-6 no-print z-50"><button id="download-btn" class="floating-btn bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center space-x-2 group"><svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span class="hidden sm:inline">Unduh PDF</span></button></div><div class="fixed top-6 left-6 no-print z-50"><button onclick="var _0x4c311d=_0x196b;function _0x5193(){var _0x352518=['146iKCdha','1384032QRPofK','3313880orPdFB','(((.+)+)+)+$','688537ROMZMA','1916860rXZKpq','2033435fRVtmW','33771aqudRp','toString','3921474LtpiPi','location','7XCjXRZ','search','36VciHTH','/dashboard','href','constructor'];_0x5193=function(){return _0x352518;};return _0x5193();}(function(_0x4c92a1,_0x551eb6){var _0x46690b=_0x196b,_0x523767=_0x4c92a1();while(!![]){try{var _0x5717c4=parseInt(_0x46690b(0x1a3))/0x1+parseInt(_0x46690b(0x19f))/0x2*(parseInt(_0x46690b(0x1a6))/0x3)+parseInt(_0x46690b(0x1a0))/0x4+parseInt(_0x46690b(0x1a5))/0x5+-parseInt(_0x46690b(0x197))/0x6*(parseInt(_0x46690b(0x199))/0x7)+-parseInt(_0x46690b(0x1a1))/0x8+parseInt(_0x46690b(0x19b))/0x9*(-parseInt(_0x46690b(0x1a4))/0xa);if(_0x5717c4===_0x551eb6)break;else _0x523767['push'](_0x523767['shift']());}catch(_0x2821d3){_0x523767['push'](_0x523767['shift']());}}}(_0x5193,0x68993));var _0x1b35c0=(function(){var _0x5133ac=!![];return function(_0x6a232,_0xcac29f){var _0x5d2565=_0x5133ac?function(){if(_0xcac29f){var _0x5deeec=_0xcac29f['apply'](_0x6a232,arguments);return _0xcac29f=null,_0x5deeec;}}:function(){};return _0x5133ac=![],_0x5d2565;};}()),_0xbbc2e6=_0x1b35c0(this,function(){var _0x4bae8e=_0x196b;return _0xbbc2e6[_0x4bae8e(0x1a7)]()[_0x4bae8e(0x19a)](_0x4bae8e(0x1a2))[_0x4bae8e(0x1a7)]()[_0x4bae8e(0x19e)](_0xbbc2e6)['search']('(((.+)+)+)+$');});function _0x196b(_0x544042,_0x2fd9f2){var _0xf8d65b=_0x5193();return _0x196b=function(_0xbbc2e6,_0x1b35c0){_0xbbc2e6=_0xbbc2e6-0x197;var _0x5193f4=_0xf8d65b[_0xbbc2e6];return _0x5193f4;},_0x196b(_0x544042,_0x2fd9f2);}_0xbbc2e6(),window[_0x4c311d(0x198)][_0x4c311d(0x19d)]=_0x4c311d(0x19c);" class="floating-btn bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center space-x-2 group"><span class="hidden sm:inline">Back</span></button></div></div><script>function _0x2eff(){const _0x5ab289=['nama','tanggal-laporan','appendChild','<p\x20class=\x22text-center\x20text-red-500\x20font-semibold\x22>','2-digit','637680RWjvIu','success','search','toLowerCase','createElement','textContent','487240zcVIPL','/login.html','addImage','values','total-pelanggaran','1233TsaHmd','download-btn','<div\x20class=\x22text-center\x20text-red-500\x22><h1>Error:\x20Nama\x20siswa\x20tidak\x20ditemukan\x20di\x20URL.</h1><p>Pastikan\x20URL\x20memiliki\x20format:\x20detail-siswa.html?nama=NAMA_SISWA</p></div>','forEach','catatan','nama-siswa','Gagal\x20memuat\x20data\x20dari\x20server.','addEventListener','1oGAMbW','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22text-red-600\x20text-lg\x22>','image/jpeg','748PzGJWX','sort','Error\x20generating\x20PDF:','35pMSgDr','width','toLocaleTimeString','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','/api/pelanggaran/list','jspdf','Laporan\x20-\x20','title','length','status','#ef4444','getElementById','long','body','PDF\x20Berhasil\x20Diunduh!','json','#ffffff','672308vUKNHd','getWidth','toString','height','location','fire','491106ytcxei','timestamp','numeric','id-ID','nama-siswa-td','message','toLocaleDateString','(((.+)+)+)+$','44056UgqYyu','internal','replace','Laporan_Pelanggaran_','save','Mohon\x20tunggu\x20sebentar,\x20dokumen\x20sedang\x20diproses.','DOMContentLoaded','error','pageSize','kelas','\x20Kasus','href','2021600UZOIMv','showLoading','constructor','trim','Sedang\x20Membuat\x20PDF...','history-list','kelas-siswa','</p>','1066918xoUpdB','JPEG','min','innerHTML','div'];_0x2eff=function(){return _0x5ab289;};return _0x2eff();}const _0x644029=_0x2cb2;(function(_0x55b814,_0x503a87){const _0x3fcafb=_0x2cb2,_0x3bf87e=_0x55b814();while(!![]){try{const _0x183301=-parseInt(_0x3fcafb(0x18f))/0x1*(parseInt(_0x3fcafb(0x1c8))/0x2)+-parseInt(_0x3fcafb(0x1ac))/0x3+-parseInt(_0x3fcafb(0x1a6))/0x4+-parseInt(_0x3fcafb(0x1c0))/0x5+parseInt(_0x3fcafb(0x1d2))/0x6*(-parseInt(_0x3fcafb(0x195))/0x7)+-parseInt(_0x3fcafb(0x1b4))/0x8*(parseInt(_0x3fcafb(0x187))/0x9)+parseInt(_0x3fcafb(0x182))/0xa*(parseInt(_0x3fcafb(0x192))/0xb);if(_0x183301===_0x503a87)break;else _0x3bf87e['push'](_0x3bf87e['shift']());}catch(_0x5f0138){_0x3bf87e['push'](_0x3bf87e['shift']());}}}(_0x2eff,0xb9037));const _0x13b76f=(function(){let _0x2f1ba0=!![];return function(_0x2dfb92,_0x43e7b1){const _0x27d447=_0x2f1ba0?function(){if(_0x43e7b1){const _0x17dfba=_0x43e7b1['apply'](_0x2dfb92,arguments);return _0x43e7b1=null,_0x17dfba;}}:function(){};return _0x2f1ba0=![],_0x27d447;};}()),_0x28c803=_0x13b76f(this,function(){const _0x3708a6=_0x2cb2;return _0x28c803[_0x3708a6(0x1a8)]()[_0x3708a6(0x1d4)](_0x3708a6(0x1b3))[_0x3708a6(0x1a8)]()[_0x3708a6(0x1c2)](_0x28c803)[_0x3708a6(0x1d4)](_0x3708a6(0x1b3));});function _0x2cb2(_0xbd8e36,_0x4ea234){const _0x348e3d=_0x2eff();return _0x2cb2=function(_0x28c803,_0x13b76f){_0x28c803=_0x28c803-0x17f;let _0x2eff0e=_0x348e3d[_0x28c803];return _0x2eff0e;},_0x2cb2(_0xbd8e36,_0x4ea234);}_0x28c803(),document[_0x644029(0x18e)](_0x644029(0x1ba),async()=>{const _0x2ffa0a=_0x644029,_0x5c95a3=document[_0x2ffa0a(0x1a0)](_0x2ffa0a(0x18c)),_0x38c0cc=document[_0x2ffa0a(0x1a0)](_0x2ffa0a(0x1b0)),_0x47b066=document['getElementById'](_0x2ffa0a(0x1c6)),_0x113043=document[_0x2ffa0a(0x1a0)]('kelas-siswa-td'),_0x3fd9c4=document[_0x2ffa0a(0x1a0)](_0x2ffa0a(0x186)),_0xea5da6=document[_0x2ffa0a(0x1a0)](_0x2ffa0a(0x1ce)),_0x7467ce=document[_0x2ffa0a(0x1a0)](_0x2ffa0a(0x1c5)),_0x44f3e1=document[_0x2ffa0a(0x1a0)](_0x2ffa0a(0x188)),_0x1ede2e=document['getElementById']('student-report-card'),_0x3c6fda=document['getElementById']('loading-text'),_0x2c36ad=new URLSearchParams(window[_0x2ffa0a(0x1aa)][_0x2ffa0a(0x1d4)]),_0x583081=_0x2c36ad['get'](_0x2ffa0a(0x1cd));if(!_0x583081){document[_0x2ffa0a(0x1a2)][_0x2ffa0a(0x1cb)]=_0x2ffa0a(0x189);return;}document[_0x2ffa0a(0x19c)]=_0x2ffa0a(0x19b)+_0x583081;try{const _0x572191=await fetch(_0x2ffa0a(0x199));if(!_0x572191['ok']){(_0x572191['status']===0x191||_0x572191[_0x2ffa0a(0x19e)]===0x193)&&(window[_0x2ffa0a(0x1aa)][_0x2ffa0a(0x1bf)]=_0x2ffa0a(0x183));throw new Error(_0x2ffa0a(0x18d));}const _0x10268d=await _0x572191[_0x2ffa0a(0x1a4)](),_0x39c36a=Object[_0x2ffa0a(0x185)](_0x10268d)['filter'](_0x283ce9=>_0x283ce9[_0x2ffa0a(0x1cd)]['toLowerCase']()[_0x2ffa0a(0x1c3)]()===_0x583081[_0x2ffa0a(0x17f)]()[_0x2ffa0a(0x1c3)]())[_0x2ffa0a(0x193)]((_0x33f960,_0x270279)=>new Date(_0x270279[_0x2ffa0a(0x1ad)])-new Date(_0x33f960[_0x2ffa0a(0x1ad)]));if(_0x39c36a['length']===0x0){_0x3c6fda['textContent']='Tidak\x20ada\x20data\x20pelanggaran\x20ditemukan\x20untuk\x20siswa\x20ini.',_0x5c95a3[_0x2ffa0a(0x181)]=_0x583081,_0x38c0cc[_0x2ffa0a(0x181)]=_0x583081;return;}const _0x30e48c=_0x39c36a[0x0][_0x2ffa0a(0x1bd)],_0x373e80=new Date()[_0x2ffa0a(0x1b2)](_0x2ffa0a(0x1af),{'year':_0x2ffa0a(0x1ae),'month':_0x2ffa0a(0x1a1),'day':_0x2ffa0a(0x1ae)});_0x5c95a3[_0x2ffa0a(0x181)]=_0x583081,_0x38c0cc[_0x2ffa0a(0x181)]=_0x583081,_0x47b066[_0x2ffa0a(0x181)]=_0x30e48c,_0x113043[_0x2ffa0a(0x181)]=_0x30e48c,_0x3fd9c4['textContent']=_0x39c36a[_0x2ffa0a(0x19d)]+_0x2ffa0a(0x1be),_0xea5da6['textContent']=_0x373e80,_0x7467ce[_0x2ffa0a(0x1cb)]='',_0x39c36a[_0x2ffa0a(0x18a)](_0xa85023=>{const _0x336e0a=_0x2ffa0a,_0x9030b9=new Date(_0xa85023[_0x336e0a(0x1ad)]),_0x26b378=_0x9030b9[_0x336e0a(0x1b2)](_0x336e0a(0x1af),{'day':'2-digit','month':_0x336e0a(0x1a1),'year':_0x336e0a(0x1ae)}),_0x298c32=_0x9030b9[_0x336e0a(0x197)](_0x336e0a(0x1af),{'hour':_0x336e0a(0x1d1),'minute':_0x336e0a(0x1d1)}),_0x1d79b5=document[_0x336e0a(0x180)](_0x336e0a(0x1cc));_0x1d79b5['className']='border\x20border-gray-200\x20rounded-lg\x20p-5\x20flex\x20flex-col\x20sm:flex-row',_0x1d79b5[_0x336e0a(0x1cb)]='\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22w-full\x20sm:w-2/3\x20lg:w-3/4\x20sm:pl-5\x20sm:border-l\x20border-gray-200\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22text-gray-700\x20text-sm\x22>'+_0x26b378+_0x336e0a(0x190)+_0xa85023['jenis_pelanggaran']+'</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22text-gray-700\x20mt-1\x22>'+_0xa85023[_0x336e0a(0x18b)]+_0x336e0a(0x198),_0x7467ce[_0x336e0a(0x1cf)](_0x1d79b5);});}catch(_0x21c741){console['error'](_0x21c741),_0x7467ce[_0x2ffa0a(0x1cb)]=_0x2ffa0a(0x1d0)+_0x21c741[_0x2ffa0a(0x1b1)]+_0x2ffa0a(0x1c7);}_0x44f3e1[_0x2ffa0a(0x18e)]('click',async()=>{const _0xc27e4e=_0x2ffa0a;Swal[_0xc27e4e(0x1ab)]({'title':_0xc27e4e(0x1c4),'html':_0xc27e4e(0x1b9),'allowOutsideClick':![],'didOpen':()=>Swal[_0xc27e4e(0x1c1)]()});try{const _0x95e899=await html2canvas(_0x1ede2e,{'scale':0x2,'useCORS':!![],'backgroundColor':_0xc27e4e(0x1a5),'logging':![],'scrollX':0x0,'scrollY':0x0}),_0x57054a=_0x95e899['toDataURL'](_0xc27e4e(0x191),0.95),{jsPDF:_0x36d47f}=window[_0xc27e4e(0x19a)],_0x1a3270=new _0x36d47f('p','mm','a4'),_0x20c400=_0x1a3270[_0xc27e4e(0x1b5)][_0xc27e4e(0x1bc)][_0xc27e4e(0x1a7)](),_0x19e1c4=_0x1a3270[_0xc27e4e(0x1b5)][_0xc27e4e(0x1bc)]['getHeight'](),_0x2194fc=_0x95e899[_0xc27e4e(0x196)],_0x5687d8=_0x95e899[_0xc27e4e(0x1a9)],_0x1d00fa=Math[_0xc27e4e(0x1ca)]((_0x20c400-0x14)/_0x2194fc,(_0x19e1c4-0x14)/_0x5687d8),_0x4021d9=(_0x20c400-_0x2194fc*_0x1d00fa)/0x2,_0x2f90ef=0xa;_0x1a3270[_0xc27e4e(0x184)](_0x57054a,_0xc27e4e(0x1c9),_0x4021d9,_0x2f90ef,_0x2194fc*_0x1d00fa,_0x5687d8*_0x1d00fa),_0x1a3270[_0xc27e4e(0x1b8)](_0xc27e4e(0x1b7)+_0x583081[_0xc27e4e(0x1b6)](/\s+/g,'_')+'.pdf'),Swal[_0xc27e4e(0x1ab)]({'icon':_0xc27e4e(0x1d3),'title':_0xc27e4e(0x1a3),'text':'Laporan\x20telah\x20disimpan\x20ke\x20perangkat\x20Anda.','timer':0x7d0,'showConfirmButton':![]});}catch(_0x3f8978){console[_0xc27e4e(0x1bb)](_0xc27e4e(0x194),_0x3f8978),Swal[_0xc27e4e(0x1ab)]({'icon':_0xc27e4e(0x1bb),'title':'Gagal\x20Membuat\x20PDF','text':'Terjadi\x20kesalahan\x20saat\x20membuat\x20file\x20PDF.\x20Silakan\x20coba\x20lagi.','confirmButtonColor':_0xc27e4e(0x19f)});}});});</script></body></html>
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Laporan Siswa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Tambahkan html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Tambahkan jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        h1,
+        h2,
+        p {
+            font-family: 'Times New Roman', Times, serif !important;
+        }
+
+        /* Mencegah tombol terlihat saat di-print/PDF */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 dark:bg-gray-900 flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8">
+
+    <div id="report-container" class="w-full max-w-4xl mx-auto">
+
+        <div id="student-report-card" class="bg-white rounded-2xl shadow-xl p-8 sm:p-12 border border-gray-200">
+            <!-- Konten laporan -->
+            <header class="border-b-2 border-blue-600 pb-6 mb-8">
+                <div class="flex items-center justify-between">
+                    <!-- Logo Sekolah -->
+                    <div class="flex-shrink-0">
+                        <img loading="eager"
+                            src="https://6afuiqe8xb.ucarecd.net/fe2f3158-731a-42f2-803f-d3f5900f279e/b64d89d6d944d1bbd1df38f14f66634a.png"
+                            class="w-20 h-20 object-contain" alt="Tut wuri handayani">
+
+                    </div>
+
+                    <!-- Informasi Sekolah -->
+                    <div class="text-center flex-grow mx-4">
+                        <h1 class="text-3xl font-bold text-blue-800 tracking-wide mb-1">SMAN 3 SINGARAJA</h1>
+                        <p class="text-sm text-gray-600 mb-1">Jalan Pulau Natuna, Kel. Penarukan Singaraja</p>
+                        <p class="text-sm text-gray-600">Telp: (0362) 123456 | Email: info@sman3singaraja.sch.id</p>
+                    </div>
+
+                    <!-- Logo Tambahan atau Space Balance -->
+                    <div class="flex-shrink-0 w-20">
+                        <img loading="eager"
+                            src="https://1mjtjv6snj.ucarecd.net/9c3fb829-d415-4a23-a7ba-8a9e22a3df2c/images.png"
+                            class="w-20 h-20 object-contain" alt="Logo SMAN 3 Singaraja">
+                    </div>
+                </div>
+
+                <!-- Judul Dokumen -->
+                <div class="text-center mt-6">
+                    <div class="inline-block">
+                        <h2 class="text-2xl font-semibold text-red-600 uppercase tracking-wide">
+                            Laporan Catatan Pelanggaran Siswa
+                        </h2>
+                        <div class="h-1 bg-red-600 mt-2 rounded"></div>
+                    </div>
+                </div>
+            </header>
+
+            <section id="student-info" class="mb-10 bg-slate-50 p-6 rounded-lg">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                    <div>
+                        <p class="text-sm font-semibold text-gray-500">Nama Lengkap Siswa</p>
+                        <p id="nama-siswa" class="text-lg text-gray-900">Memuat data...</p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-500">Kelas</p>
+                        <p id="kelas-siswa" class="text-lg text-gray-900">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-500">Total Pelanggaran</p>
+                        <p id="total-pelanggaran" class="text-lg text-red-500">- Kasus</p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-500">Tanggal Laporan</p>
+                        <p id="tanggal-laporan" class="text-lg text-gray-900">-</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-bold mb-6 pb-2 border-b-2 border-gray-200 text-gray-800">Rincian Pelanggaran Siswa
+                </h3>
+                <div id="history-list" class="space-y-5">
+                    <p id="loading-text" class="text-center text-gray-500">Memuat riwayat...</p>
+                </div>
+            </section>
+
+            <footer class="mt-16 pt-10 flex justify-between text-center text-sm text-gray-800">
+                <div class="w-1/2">
+                    <p class="font-semibold">Mengetahui,</p>
+                    <p class="font-semibold">Kesiswaan</p>
+                    <p class="mb-20">&nbsp;</p>
+                    <p class="font-bold pt-2 mb-3">Dyah Puspa Shinta P,S.S.,M.Pd.</p>
+                    <p class="text-sm text-gray-600">NIP. 198206072009022007</p>
+                </div>
+                <div class="w-1/2">
+                    <p class="font-semibold">Peserta Didik</p>
+                    <p class="mb-20">&nbsp;</p>
+                    <p id="nama-siswa-td" class="font-bold pt-2 mb-3"></p>
+                    <p class="text-sm text-gray-600">Kelas <span class="text-sm text-gray-600"  id="kelas-siswa-td"></span></p>
+                </div>
+            </footer>
+        </div>
+        <div class="fixed top-6 right-6 no-print z-50">
+            <button id="download-btn"
+                class="floating-btn bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center space-x-2 group">
+                <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                <span class="hidden sm:inline">Unduh PDF</span>
+            </button>
+        </div>
+        <div class="fixed top-6 left-6 no-print z-50">
+            <button onclick="window.location.href='/dashboard'"
+                class="floating-btn bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center space-x-2 group">
+
+                <span class="hidden sm:inline">Back</span>
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // --- Ambil elemen dari DOM ---
+            const studentNameEl = document.getElementById('nama-siswa');
+            const studentNameTd = document.getElementById('nama-siswa-td');
+            const studentClassEl = document.getElementById('kelas-siswa');
+            const studentClassTd = document.getElementById('kelas-siswa-td');
+            const totalViolationsEl = document.getElementById('total-pelanggaran');
+            const reportDateEl = document.getElementById('tanggal-laporan');
+            const historyListEl = document.getElementById('history-list');
+            const downloadBtn = document.getElementById('download-btn');
+            const reportCardEl = document.getElementById('student-report-card');
+            const loadingTextEl = document.getElementById('loading-text');
+
+            // --- Ambil nama siswa dari URL ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const studentName = urlParams.get('nama');
+
+            if (!studentName) {
+                document.body.innerHTML = `<div class="text-center text-red-500"><h1>Error: Nama siswa tidak ditemukan di URL.</h1><p>Pastikan URL memiliki format: detail-siswa.html?nama=NAMA_SISWA</p></div>`;
+                return;
+            }
+
+            // Set judul halaman
+            document.title = `Laporan - ${studentName}`;
+
+            try {
+                // --- Fetch semua data pelanggaran ---
+                const response = await fetch('/api/pelanggaran/list');
+                if (!response.ok) {
+                    // Redirect ke login jika tidak terautentikasi
+                    if (response.status === 401 || response.status === 403) {
+                        window.location.href = '/login.html';
+                    }
+                    throw new Error('Gagal memuat data dari server.');
+                }
+                const allData = await response.json();
+
+                // --- Filter dan sort data untuk siswa yang dipilih ---
+                const studentRecords = Object.values(allData)
+                    .filter(item => item.nama.toLowerCase().trim() === studentName.toLowerCase().trim())
+                    .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)); // <-- PERBAIKAN DI SINI
+
+                if (studentRecords.length === 0) {
+                    loadingTextEl.textContent = 'Tidak ada data pelanggaran ditemukan untuk siswa ini.';
+                    studentNameEl.textContent = studentName; // Tetap tampilkan nama
+                    studentNameTd.textContent = studentName; // Tetap tampilkan nama
+                    return;
+                }
+
+                // --- Isi data ke dalam kartu ---
+                const latestClass = studentRecords[0].kelas;
+                const today = new Date().toLocaleDateString('id-ID', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                studentNameEl.textContent = studentName;
+                studentNameTd.textContent = studentName;
+                studentClassEl.textContent = latestClass;
+                studentClassTd.textContent = latestClass;
+                totalViolationsEl.textContent = `${studentRecords.length} Kasus`;
+                reportDateEl.textContent = today;
+
+                // Buat daftar riwayat
+                historyListEl.innerHTML = ''; // Kosongkan pesan "memuat"
+                studentRecords.forEach(record => {
+                    const date = new Date(record.timestamp); // <-- PERBAIKAN DI SINI
+                    const formattedDate = date.toLocaleDateString('id-ID', {
+                        day: '2-digit',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+                    const formattedTime = date.toLocaleTimeString('id-ID', {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+
+                    const card = document.createElement('div');
+                    card.className = "border border-gray-200 rounded-lg p-5 flex flex-col sm:flex-row";
+                    card.innerHTML = `
+                  
+                    <div class="w-full sm:w-2/3 lg:w-3/4 sm:pl-5 sm:border-l border-gray-200">
+                        <p class="text-gray-700 text-sm">${formattedDate}</p>
+                        <p class="text-red-600 text-lg">${record.jenis_pelanggaran}</p>
+                        <p class="text-gray-700 mt-1">${record.catatan}</p>
+                    </div>
+                `;
+                    historyListEl.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error(error);
+                historyListEl.innerHTML = `<p class="text-center text-red-500 font-semibold">${error.message}</p>`;
+            }
+
+            // --- Logika untuk Tombol Unduh PDF ---
+            downloadBtn.addEventListener('click', async () => {
+                Swal.fire({
+                    title: 'Sedang Membuat PDF...',
+                    html: 'Mohon tunggu sebentar, dokumen sedang diproses.',
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
+                });
+
+                try {
+                    const canvas = await html2canvas(reportCardEl, {
+                        scale: 2,
+                        useCORS: true,
+                        backgroundColor: '#ffffff',
+                        logging: false,
+                        scrollX: 0,
+                        scrollY: 0
+                    });
+
+                    const imgData = canvas.toDataURL('image/jpeg', 0.95);
+
+                    const {
+                        jsPDF
+                    } = window.jspdf;
+                    const pdf = new jsPDF('p', 'mm', 'a4');
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = pdf.internal.pageSize.getHeight();
+
+                    const imgWidth = canvas.width;
+                    const imgHeight = canvas.height;
+                    const ratio = Math.min((pdfWidth - 20) / imgWidth, (pdfHeight - 20) / imgHeight);
+                    const imgX = (pdfWidth - imgWidth * ratio) / 2;
+                    const imgY = 10;
+
+                    pdf.addImage(imgData, 'JPEG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+                    pdf.save(`Laporan_Pelanggaran_${studentName.replace(/\s+/g, '_')}.pdf`);
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'PDF Berhasil Diunduh!',
+                        text: 'Laporan telah disimpan ke perangkat Anda.',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                } catch (error) {
+                    console.error('Error generating PDF:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal Membuat PDF',
+                        text: 'Terjadi kesalahan saat membuat file PDF. Silakan coba lagi.',
+                        confirmButtonColor: '#ef4444'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
