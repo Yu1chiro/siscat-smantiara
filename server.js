@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // --- KONEKSI KE MONGODB ---
-const MONGO_URI = process.env.MONGO_STORAGE;
+const MONGO_URI = process.env.MONGODB_URI;
 
 if (!MONGO_URI) {
     console.error("Kesalahan: Variabel MONGO_URI belum diatur.");
