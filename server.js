@@ -11,22 +11,39 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // --- KONEKSI KE MONGODB ---
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_STORAGE;
 
-// Cek apakah MONGO_URI sudah ada
 if (!MONGO_URI) {
-    console.error("Kesalahan: Variabel MONGO_URI belum diatur di file .env");
-    process.exit(1); // Keluar dari aplikasi jika URI tidak ditemukan
+    console.error("Kesalahan: Variabel MONGO_URI belum diatur.");
+    process.exit(1);
 }
 
-mongoose.connect(MONGO_URI)
-    .then(() => console.log("MongoDB connected successfully."))
-    .catch(err => {
+// Variabel untuk menyimpan status koneksi (cache)
+let cachedDb = null;
+
+async function connectToDatabase() {
+    // Jika koneksi sudah ada, gunakan yang sudah ada
+    if (cachedDb) {
+        console.log("Using existing MongoDB connection.");
+        return cachedDb;
+    }
+
+    // Jika belum ada, buat koneksi baru
+    try {
+        console.log("Creating new MongoDB connection.");
+        const db = await mongoose.connect(MONGO_URI);
+        cachedDb = db; // Simpan koneksi di cache
+        console.log("MongoDB connected successfully.");
+        return db;
+    } catch (err) {
         console.error("MongoDB connection error:", err);
         process.exit(1);
-    });
+    }
+}
 
-
+// Agar Express bisa berfungsi di Vercel, kita perlu export app
+// Dan kita panggil koneksi database di awal
+connectToDatabase();
 // Skema untuk Catatan Pelanggaran
 const pelanggaranSchema = new mongoose.Schema({
     nama: { type: String, required: true, trim: true },
@@ -320,8 +337,8 @@ app.delete("/api/pelanggaran/delete/:id", checkAuth, async (req, res) => {
     res.status(500).json({ success: false, message: "Gagal menghapus data." });
   }
 });
-
+module.exports = app;
 // Server Listener
-app.listen(PORT, () => {
-  console.log(`Server berjalan di http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server berjalan di http://localhost:${PORT}`);
+// });
