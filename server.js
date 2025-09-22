@@ -6,6 +6,8 @@ const path = require("path");
 const mongoose = require("mongoose");
 const { body, validationResult } = require("express-validator");
 const nodemailer = require("nodemailer");
+const axios = require('axios'); // Untuk membuat HTTP request ke Firebase
+const cors = require('cors');
 
 // Inisialisasi Konfigurasi
 dotenv.config();
@@ -383,6 +385,7 @@ admin.initializeApp({
 const auth = admin.auth();
 
 // Middleware
+app.use(cors()); // Mengaktifkan Cross-Origin Resource Sharing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -495,6 +498,33 @@ app.get("/api/auth/logout", (req, res) => {
   res.clearCookie("session");
   res.redirect("/login");
 });
+app.get('/api/get-token', async (req, res) => {
+    // Ambil URL database dari environment variable
+    const dbUrl = process.env.DATABASE_URL;
+
+    // Cek apakah DATABASE_URL sudah diatur di file .env
+    if (!dbUrl) {
+        console.error('Error: DATABASE_URL tidak ditemukan di file .env');
+        return res.status(500).json({ success: false, message: 'Konfigurasi server error.' });
+    }
+
+    // Buat URL lengkap untuk mengakses access_token di Firebase
+    const tokenUrl = `${dbUrl}token/access_token.json`;
+
+    try {
+        // Lakukan GET request ke URL Firebase
+        const response = await axios.get(tokenUrl);
+        const accessToken = response.data;
+
+        // Kirim token kembali ke client dalam format JSON
+        res.status(200).json({ success: true, token: accessToken });
+
+    } catch (error) {
+        // Tangani error jika gagal mengambil data dari Firebase
+        console.error('Gagal mengambil token dari Firebase:', error.message);
+        res.status(500).json({ success: false, message: 'Tidak dapat terhubung ke database.' });
+    }
+});
 // =================================================================
 // API KONFIGURASI NOTIFIKASI (BARU)
 // =================================================================
@@ -588,48 +618,71 @@ app.get("/api/db/storage-usage", checkAuth, async (req, res) => {
 // =================================================================
 // API PENGADUAN SISWA (MONGODB)
 // =================================================================
+const triggerNotificationEmail = async (aduanData) => {
+  try {
+    const config = await Notification.findOne({ notifyOnAduan: true });
+
+    if (config && config.emails && config.emails.length > 0) {
+      console.log(`Mempersiapkan pengiriman notifikasi ke ${config.emails.length} penerima...`);
+
+      // Menggunakan Promise.all untuk mengirim email secara paralel
+      // Ini lebih efisien jika penerimanya banyak
+      const emailPromises = config.emails.map(emailAddress =>
+        sendNotificationEmail(emailAddress, aduanData)
+      );
+      
+      await Promise.all(emailPromises);
+      console.log("Semua email notifikasi berhasil dimasukkan ke antrian pengiriman.");
+
+    } else {
+      console.warn(
+        "Peringatan: Tidak ada konfigurasi notifikasi aktif untuk aduan baru. Email tidak dikirim."
+      );
+    }
+  } catch (emailError) {
+    // Error ini penting agar proses utama tahu jika ada kegagalan
+    console.error("Terjadi kegagalan fatal saat proses kirim notifikasi:", emailError);
+    // Secara opsional, Anda bisa melempar error lagi jika ingin proses utama berhenti
+    // throw new Error("Gagal mengirim notifikasi email.");
+  }
+};
 
 // Endpoint untuk mengirim aduan (publik, tidak perlu login)
-app.post("/api/aduan/kirim", [body("nama").trim().escape(), body("kelas").trim().escape(), body("jenis_pelanggaran").trim().escape(), body("detail_aduan").trim().escape()], async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ success: false, message: "Input tidak valid.", errors: errors.array() });
-  }
-  try {
-    const { nama, kelas, detail_aduan, jenis_pelanggaran, email } = req.body;
-    if (!nama || !kelas || !detail_aduan || !jenis_pelanggaran || !email) {
-      return res.status(400).json({ success: false, message: "Semua field wajib diisi." });
+app.post("/api/aduan/kirim",
+  [
+    body("nama").trim().escape(),
+    body("kelas").trim().escape(),
+    body("jenis_pelanggaran").trim().escape(),
+    body("detail_aduan").trim().escape(),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ success: false, message: "Input tidak valid.", errors: errors.array() });
     }
-    const newAduan = new Aduan({ nama, kelas, detail_aduan, jenis_pelanggaran, email, status: 'Baru' });
-    await newAduan.save();
 
-    // --- TRIGGER PENGIRIMAN EMAIL ---
-    // --- TRIGGER PENGIRIMAN EMAIL (FIXED) ---
-    (async () => {
-      try {
-        // 'subscribers' akan berisi dokumen tunggal yang memiliki field 'emails'
-        const config = await Notification.findOne({ notifyOnAduan: true });
-
-        // Cek jika ada konfigurasi DAN array emails tidak kosong
-        if (config && config.emails && config.emails.length > 0) {
-          console.log(`Mengirim notifikasi ke ${config.emails.length} penerima...`);
-
-          // Loop melalui setiap email di dalam array 'emails'
-          for (const emailAddress of config.emails) {
-            await sendNotificationEmail(emailAddress, newAduan); // <-- BENAR
-          }
-        }
-      } catch (emailError) {
-        console.error("Gagal saat proses kirim notifikasi:", emailError);
+    try {
+      const { nama, kelas, detail_aduan, jenis_pelanggaran, email } = req.body;
+      if (!nama || !kelas || !detail_aduan || !jenis_pelanggaran || !email) {
+        return res.status(400).json({ success: false, message: "Semua field wajib diisi." });
       }
-    })();
 
-    res.status(201).json({ success: true, message: "Laporan aduan berhasil di kirim! kami akan segera memproses aduan anda" });
-  } catch (error) {
-    console.error("Error di /api/aduan/kirim:", error);
-    res.status(500).json({ success: false, message: "Terjadi kesalahan pada server." });
-  }
-});
+      // 1. Simpan aduan ke database
+      const newAduan = new Aduan({ nama, kelas, detail_aduan, jenis_pelanggaran, email, status: 'Baru' });
+      await newAduan.save();
+      console.log("Aduan baru berhasil disimpan ke database.");
+
+      // 2. Panggil dan TUNGGU proses notifikasi selesai
+      await triggerNotificationEmail(newAduan);
+
+      // 3. Setelah SEMUA proses selesai, baru kirim respons
+      res.status(201).json({ success: true, message: "Laporan aduan berhasil di kirim! Kami akan segera memproses aduan Anda." });
+
+    } catch (error) {
+      console.error("Error di /api/aduan/kirim:", error);
+      res.status(500).json({ success: false, message: "Terjadi kesalahan pada server." });
+    }
+  });
 app.get("/api/aduan/stats", async (req, res) => {
   try {
     const statusCounts = await Aduan.aggregate([{ $group: { _id: "$status", count: { $sum: 1 } } }, { $project: { status: "$_id", count: 1, _id: 0 } }]);
