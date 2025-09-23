@@ -6,8 +6,8 @@ const path = require("path");
 const mongoose = require("mongoose");
 const { body, validationResult } = require("express-validator");
 const nodemailer = require("nodemailer");
-const axios = require('axios'); // Untuk membuat HTTP request ke Firebase
-const cors = require('cors');
+const axios = require("axios"); // Untuk membuat HTTP request ke Firebase
+const cors = require("cors");
 
 // Inisialisasi Konfigurasi
 dotenv.config();
@@ -59,8 +59,8 @@ const transporter = nodemailer.createTransport({
 
 /**
  * Fungsi untuk mengirim email notifikasi aduan baru.
- * @param {string} recipientEmail 
- * @param {object} aduanData 
+ * @param {string} recipientEmail
+ * @param {object} aduanData
  */
 const sendNotificationEmail = async (recipientEmail, aduanData) => {
   const { nama, kelas, jenis_pelanggaran } = aduanData;
@@ -228,26 +228,26 @@ const sendNotificationEmail = async (recipientEmail, aduanData) => {
 };
 
 /**
- * @param {string} recipientEmail 
- * @param {object} aduanData 
+ * @param {string} recipientEmail
+ * @param {object} aduanData
  */
 const sendStatusUpdateEmailToStudent = async (recipientEmail, aduanData) => {
-    const { nama, jenis_pelanggaran, status } = aduanData;
+  const { nama, jenis_pelanggaran, status } = aduanData;
 
-    let statusMessage = '';
-    if (status === 'Diproses') {
-        statusMessage = 'sedang dalam peninjauan dan investigasi lebih lanjut oleh pihak sekolah.';
-    } else if (status === 'Selesai') {
-        statusMessage = 'telah selesai ditangani. Terima kasih atas kontribusi Anda dalam menjaga keamanan sekolah.';
-    } else {
-        return; // Jangan kirim email untuk status lain
-    }
+  let statusMessage = "";
+  if (status === "Diproses") {
+    statusMessage = "sedang dalam peninjauan dan investigasi lebih lanjut oleh pihak sekolah.";
+  } else if (status === "Selesai") {
+    statusMessage = "telah selesai ditangani. Terima kasih atas kontribusi Anda dalam menjaga keamanan sekolah.";
+  } else {
+    return; // Jangan kirim email untuk status lain
+  }
 
-    const mailOptions = {
-        from: `"Admin SISCAT-SMANTIARA" <${process.env.EMAIL_USER}>`,
-        to: recipientEmail,
-        subject: `Hallo ${nama}`,
-        html: `
+  const mailOptions = {
+    from: `"Admin SISCAT-SMANTIARA" <${process.env.EMAIL_USER}>`,
+    to: recipientEmail,
+    subject: `Hallo ${nama}`,
+    html: `
             <div style="font-family: Arial, sans-serif; line-height: 1.6;">
                 <p>Terima kasih telah mengirimkan laporan melalui SISCAT-SMANTIARA</p>
                 <p>Kami ingin menyampaikan bahwa laporan anda mengenai <strong>"${jenis_pelanggaran}"</strong> sudah kami terima</p>
@@ -260,14 +260,14 @@ const sendStatusUpdateEmailToStudent = async (recipientEmail, aduanData) => {
                 </p>
             </div>
         `,
-    };
+  };
 
-    try {
-        await transporter.sendMail(mailOptions);
-        console.log(`Email status update terkirim ke siswa: ${recipientEmail}`);
-    } catch (error) {
-        console.error(`Gagal mengirim email status update ke ${recipientEmail}:`, error);
-    }
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`Email status update terkirim ke siswa: ${recipientEmail}`);
+  } catch (error) {
+    console.error(`Gagal mengirim email status update ke ${recipientEmail}:`, error);
+  }
 };
 // Letakkan ini setelah fungsi sendStatusUpdateEmailToStudent
 
@@ -330,13 +330,13 @@ const pelanggaranSchema = new mongoose.Schema({
 
 // Skema untuk Aduan Siswa
 const aduanSchema = new mongoose.Schema({
-    nama: { type: String, required: true, trim: true },
-    email: { type: String, required: false, trim: true }, // <-- TAMBAHKAN BARIS INI
-    kelas: { type: String, required: true, trim: true },
-    jenis_pelanggaran: { type: String, required: true, trim: true },
-    detail_aduan: { type: String, required: true, trim: true },
-    status: { type: String, default: 'Baru' },
-    timestamp: { type: Date, default: Date.now }
+  nama: { type: String, required: true, trim: true },
+  email: { type: String, required: false, trim: true }, // <-- TAMBAHKAN BARIS INI
+  kelas: { type: String, required: true, trim: true },
+  jenis_pelanggaran: { type: String, required: true, trim: true },
+  detail_aduan: { type: String, required: true, trim: true },
+  status: { type: String, default: "Baru" },
+  timestamp: { type: Date, default: Date.now },
 });
 
 // Helper untuk mengubah _id -> id di response JSON agar kompatibel dengan frontend
@@ -432,9 +432,7 @@ app.get("/form-aduan", (req, res) => res.sendFile(path.join(__dirname, "public",
 app.post("/api/auth/register", async (req, res) => {
   const { username, email, password } = req.body;
   if (!username || !email || !password) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Semua field wajib diisi." });
+    return res.status(400).json({ success: false, message: "Semua field wajib diisi." });
   }
 
   try {
@@ -460,14 +458,13 @@ app.post("/api/auth/register", async (req, res) => {
     // Respon sukses (tidak berubah, karena frontend sudah menampilkan pesan yang benar)
     res.status(201).json({
       success: true,
-      message:
-        "Registrasi berhasil. Silakan cek email Anda untuk verifikasi.",
+      message: "Registrasi berhasil. Silakan cek email Anda untuk verifikasi.",
     });
   } catch (error) {
     console.error("Error saat registrasi:", error);
     // Memberikan pesan error yang lebih spesifik jika email sudah terdaftar
-    if (error.code === 'auth/email-already-exists') {
-        return res.status(409).json({ success: false, message: "Email ini sudah terdaftar. Silakan gunakan email lain." });
+    if (error.code === "auth/email-already-exists") {
+      return res.status(409).json({ success: false, message: "Email ini sudah terdaftar. Silakan gunakan email lain." });
     }
     res.status(500).json({ success: false, message: "Terjadi kesalahan pada server." });
   }
@@ -498,32 +495,31 @@ app.get("/api/auth/logout", (req, res) => {
   res.clearCookie("session");
   res.redirect("/login");
 });
-app.get('/api/get-token', async (req, res) => {
-    // Ambil URL database dari environment variable
-    const dbUrl = process.env.DATABASE_URL;
+app.get("/api/get-token", async (req, res) => {
+  // Ambil URL database dari environment variable
+  const dbUrl = process.env.DATABASE_URL;
 
-    // Cek apakah DATABASE_URL sudah diatur di file .env
-    if (!dbUrl) {
-        console.error('Error: DATABASE_URL tidak ditemukan di file .env');
-        return res.status(500).json({ success: false, message: 'Konfigurasi server error.' });
-    }
+  // Cek apakah DATABASE_URL sudah diatur di file .env
+  if (!dbUrl) {
+    console.error("Error: DATABASE_URL tidak ditemukan di file .env");
+    return res.status(500).json({ success: false, message: "Konfigurasi server error." });
+  }
 
-    // Buat URL lengkap untuk mengakses access_token di Firebase
-    const tokenUrl = `${dbUrl}token/access_token.json`;
+  // Buat URL lengkap untuk mengakses access_token di Firebase
+  const tokenUrl = `${dbUrl}token/access_token.json`;
 
-    try {
-        // Lakukan GET request ke URL Firebase
-        const response = await axios.get(tokenUrl);
-        const accessToken = response.data;
+  try {
+    // Lakukan GET request ke URL Firebase
+    const response = await axios.get(tokenUrl);
+    const accessToken = response.data;
 
-        // Kirim token kembali ke client dalam format JSON
-        res.status(200).json({ success: true, token: accessToken });
-
-    } catch (error) {
-        // Tangani error jika gagal mengambil data dari Firebase
-        console.error('Gagal mengambil token dari Firebase:', error.message);
-        res.status(500).json({ success: false, message: 'Tidak dapat terhubung ke database.' });
-    }
+    // Kirim token kembali ke client dalam format JSON
+    res.status(200).json({ success: true, token: accessToken });
+  } catch (error) {
+    // Tangani error jika gagal mengambil data dari Firebase
+    console.error("Gagal mengambil token dari Firebase:", error.message);
+    res.status(500).json({ success: false, message: "Tidak dapat terhubung ke database." });
+  }
 });
 // =================================================================
 // API KONFIGURASI NOTIFIKASI (BARU)
@@ -627,17 +623,12 @@ const triggerNotificationEmail = async (aduanData) => {
 
       // Menggunakan Promise.all untuk mengirim email secara paralel
       // Ini lebih efisien jika penerimanya banyak
-      const emailPromises = config.emails.map(emailAddress =>
-        sendNotificationEmail(emailAddress, aduanData)
-      );
-      
+      const emailPromises = config.emails.map((emailAddress) => sendNotificationEmail(emailAddress, aduanData));
+
       await Promise.all(emailPromises);
       console.log("Semua email notifikasi berhasil dimasukkan ke antrian pengiriman.");
-
     } else {
-      console.warn(
-        "Peringatan: Tidak ada konfigurasi notifikasi aktif untuk aduan baru. Email tidak dikirim."
-      );
+      console.warn("Peringatan: Tidak ada konfigurasi notifikasi aktif untuk aduan baru. Email tidak dikirim.");
     }
   } catch (emailError) {
     // Error ini penting agar proses utama tahu jika ada kegagalan
@@ -648,41 +639,33 @@ const triggerNotificationEmail = async (aduanData) => {
 };
 
 // Endpoint untuk mengirim aduan (publik, tidak perlu login)
-app.post("/api/aduan/kirim",
-  [
-    body("nama").trim().escape(),
-    body("kelas").trim().escape(),
-    body("jenis_pelanggaran").trim().escape(),
-    body("detail_aduan").trim().escape(),
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ success: false, message: "Input tidak valid.", errors: errors.array() });
+app.post("/api/aduan/kirim", [body("nama").trim().escape(), body("kelas").trim().escape(), body("jenis_pelanggaran").trim().escape(), body("detail_aduan").trim().escape()], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ success: false, message: "Input tidak valid.", errors: errors.array() });
+  }
+
+  try {
+    const { nama, kelas, detail_aduan, jenis_pelanggaran, email } = req.body;
+    if (!nama || !kelas || !detail_aduan || !jenis_pelanggaran || !email) {
+      return res.status(400).json({ success: false, message: "Semua field wajib diisi." });
     }
 
-    try {
-      const { nama, kelas, detail_aduan, jenis_pelanggaran, email } = req.body;
-      if (!nama || !kelas || !detail_aduan || !jenis_pelanggaran || !email) {
-        return res.status(400).json({ success: false, message: "Semua field wajib diisi." });
-      }
+    // 1. Simpan aduan ke database
+    const newAduan = new Aduan({ nama, kelas, detail_aduan, jenis_pelanggaran, email, status: "Baru" });
+    await newAduan.save();
+    console.log("Aduan baru berhasil disimpan ke database.");
 
-      // 1. Simpan aduan ke database
-      const newAduan = new Aduan({ nama, kelas, detail_aduan, jenis_pelanggaran, email, status: 'Baru' });
-      await newAduan.save();
-      console.log("Aduan baru berhasil disimpan ke database.");
+    // 2. Panggil dan TUNGGU proses notifikasi selesai
+    await triggerNotificationEmail(newAduan);
 
-      // 2. Panggil dan TUNGGU proses notifikasi selesai
-      await triggerNotificationEmail(newAduan);
-
-      // 3. Setelah SEMUA proses selesai, baru kirim respons
-      res.status(201).json({ success: true, message: "Laporan aduan berhasil di kirim! Kami akan segera memproses aduan Anda." });
-
-    } catch (error) {
-      console.error("Error di /api/aduan/kirim:", error);
-      res.status(500).json({ success: false, message: "Terjadi kesalahan pada server." });
-    }
-  });
+    // 3. Setelah SEMUA proses selesai, baru kirim respons
+    res.status(201).json({ success: true, message: "Laporan aduan berhasil di kirim! Kami akan segera memproses aduan Anda." });
+  } catch (error) {
+    console.error("Error di /api/aduan/kirim:", error);
+    res.status(500).json({ success: false, message: "Terjadi kesalahan pada server." });
+  }
+});
 app.get("/api/aduan/stats", async (req, res) => {
   try {
     const statusCounts = await Aduan.aggregate([{ $group: { _id: "$status", count: { $sum: 1 } } }, { $project: { status: "$_id", count: 1, _id: 0 } }]);
@@ -719,30 +702,30 @@ app.get("/api/aduan/list", async (req, res) => {
   }
 });
 app.patch("/api/aduan/update-status/:id", checkAuth, async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { status } = req.body;
-        if (!status) {
-            return res.status(400).json({ success: false, message: "Status wajib diisi." });
-        }
-        
-        const updatedAduan = await Aduan.findByIdAndUpdate(id, { status }, { new: true });
-        
-        if (!updatedAduan) {
-            return res.status(404).json({ success: false, message: "Data aduan tidak ditemukan" });
-        }
-
-        // --- TRIGGER PENGIRIMAN EMAIL KE SISWA ---
-        // Cek jika aduan punya email dan statusnya relevan (Diproses/Selesai)
-        if (updatedAduan.email && (updatedAduan.status === 'Diproses' || updatedAduan.status === 'Selesai')) {
-            await sendStatusUpdateEmailToStudent(updatedAduan.email, updatedAduan);
-        }
-
-        res.json({ success: true, message: `Status aduan berhasil diubah menjadi "${status}"` });
-    } catch (error) {
-        console.error("Error di /api/aduan/update-status:", error);
-        res.status(500).json({ success: false, message: "Gagal mengubah status aduan." });
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    if (!status) {
+      return res.status(400).json({ success: false, message: "Status wajib diisi." });
     }
+
+    const updatedAduan = await Aduan.findByIdAndUpdate(id, { status }, { new: true });
+
+    if (!updatedAduan) {
+      return res.status(404).json({ success: false, message: "Data aduan tidak ditemukan" });
+    }
+
+    // --- TRIGGER PENGIRIMAN EMAIL KE SISWA ---
+    // Cek jika aduan punya email dan statusnya relevan (Diproses/Selesai)
+    if (updatedAduan.email && (updatedAduan.status === "Diproses" || updatedAduan.status === "Selesai")) {
+      await sendStatusUpdateEmailToStudent(updatedAduan.email, updatedAduan);
+    }
+
+    res.json({ success: true, message: `Status aduan berhasil diubah menjadi "${status}"` });
+  } catch (error) {
+    console.error("Error di /api/aduan/update-status:", error);
+    res.status(500).json({ success: false, message: "Gagal mengubah status aduan." });
+  }
 });
 
 // Endpoint untuk menghapus aduan (memerlukan login admin)
@@ -765,10 +748,27 @@ app.delete("/api/aduan/delete/:id", checkAuth, async (req, res) => {
 // =================================================================
 
 // Endpoint untuk menambah data pelanggaran (memerlukan login admin)
+// Endpoint untuk menambah data pelanggaran (memerlukan login admin)
 app.post("/api/pelanggaran/add", checkAuth, async (req, res) => {
   try {
-    const { nama, kelas, jenis_pelanggaran, catatan } = req.body;
-    const newPelanggaran = new Pelanggaran({ nama, kelas, jenis_pelanggaran, catatan });
+    // Ambil customTimestamp dari body request
+    const { nama, kelas, jenis_pelanggaran, catatan, customTimestamp } = req.body;
+
+    // Siapkan data yang akan disimpan
+    const dataToSave = {
+      nama,
+      kelas,
+      jenis_pelanggaran,
+      catatan,
+    };
+
+    // Jika client mengirim tanggal kustom, tambahkan ke data yang akan disimpan
+    // Ini akan menimpa default 'Date.now' dari schema
+    if (customTimestamp) {
+      dataToSave.timestamp = new Date(customTimestamp);
+    }
+
+    const newPelanggaran = new Pelanggaran(dataToSave);
     await newPelanggaran.save();
     res.status(201).json({ success: true, message: "Data berhasil ditambahkan", data: newPelanggaran });
   } catch (error) {
@@ -776,7 +776,6 @@ app.post("/api/pelanggaran/add", checkAuth, async (req, res) => {
     res.status(500).json({ success: false, message: "Gagal menambahkan data." });
   }
 });
-
 // Endpoint untuk melihat daftar pelanggaran (bisa diakses publik dan admin)
 // Catatan: checkAuth dilepas agar statistik di halaman utama bisa tampil.
 app.get("/api/pelanggaran/list", async (req, res) => {
