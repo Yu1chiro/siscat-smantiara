@@ -4,3 +4,4 @@ build.js
 dev/
 .vercel
 .env*.local
+insert-pelanggaran.js
