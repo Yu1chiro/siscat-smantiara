@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 
 // --- KONEKSI KE NEONDB (POSTGRESQL) ---
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_NEON,
   ssl: {
     rejectUnauthorized: false,
   },
